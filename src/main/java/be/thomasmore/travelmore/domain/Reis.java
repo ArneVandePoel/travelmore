@@ -12,19 +12,25 @@ public class Reis {
     private int reisID;
     @Column(name = "prijs")
     private double prijs;
-    @Column(name = "tijdstipVertrek")
-    private Date tijdstipVertrek;
-    @Column(name = "tijdstipAankomst")
-    private Date tijdstipAankomst;
+    @Column(name = "tijdstipVertrekHeen")
+    private Date tijdstipVertrekHeen;
+    @Column(name = "tijdstipAankomstHeen")
+    private Date tijdstipAankomstHeen;
+    @Column(name = "tijdstipVertrekTerug")
+    private Date tijdstipVertrekTerug;
+    @Column(name = "tijdstipAankomstTerug")
+    private Date tijdstipAankomstTerug;
     @Column(name = "reisLeiderNaam")
     private String reisLeiderNaam;
     @Column(name = "chauffeurNaam")
     private String chauffeurNaam;
+    @Column(name = "titel")
+    private String titel;
+    @Column(name = "beschrijving")
+    private String beschrijving;
 
     @ManyToOne
     private Locatie vertrekLocatie;
-    @ManyToOne
-    private Locatie aankomstLocatie;
     @ManyToOne
     private Hotel hotel;
     @ManyToOne
@@ -47,20 +53,36 @@ public class Reis {
         this.prijs = prijs;
     }
 
-    public Date getTijdstipVertrek() {
-        return tijdstipVertrek;
+    public Date getTijdstipVertrekHeen() {
+        return tijdstipVertrekHeen;
     }
 
-    public void setTijdstipVertrek(Date tijdstipVertrek) {
-        this.tijdstipVertrek = tijdstipVertrek;
+    public void setTijdstipVertrekHeen(Date tijdstipVertrekHeen) {
+        this.tijdstipVertrekHeen = tijdstipVertrekHeen;
     }
 
-    public Date getTijdstipAankomst() {
-        return tijdstipAankomst;
+    public Date getTijdstipAankomstHeen() {
+        return tijdstipAankomstHeen;
     }
 
-    public void setTijdstipAankomst(Date tijdstipAankomst) {
-        this.tijdstipAankomst = tijdstipAankomst;
+    public void setTijdstipAankomstHeen(Date tijdstipAankomstHeen) {
+        this.tijdstipAankomstHeen = tijdstipAankomstHeen;
+    }
+
+    public Date getTijdstipVertrekTerug() {
+        return tijdstipVertrekTerug;
+    }
+
+    public void setTijdstipVertrekTerug(Date tijdstipVertrekTerug) {
+        this.tijdstipVertrekTerug = tijdstipVertrekTerug;
+    }
+
+    public Date getTijdstipAankomstTerug() {
+        return tijdstipAankomstTerug;
+    }
+
+    public void setTijdstipAankomstTerug(Date tijdstipAankomstTerug) {
+        this.tijdstipAankomstTerug = tijdstipAankomstTerug;
     }
 
     public String getReisLeiderNaam() {
@@ -87,14 +109,6 @@ public class Reis {
         this.vertrekLocatie = vertrekLocatie;
     }
 
-    public Locatie getAankomstLocatie() {
-        return aankomstLocatie;
-    }
-
-    public void setAankomstLocatie(Locatie aankomstLocatie) {
-        this.aankomstLocatie = aankomstLocatie;
-    }
-
     public Hotel getHotel() {
         return hotel;
     }
@@ -109,5 +123,21 @@ public class Reis {
 
     public void setBus(Bus bus) {
         this.bus = bus;
+    }
+
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    public String getBeschrijving() {
+        return beschrijving;
+    }
+
+    public void setBeschrijving(String beschrijving) {
+        this.beschrijving = beschrijving;
     }
 }
