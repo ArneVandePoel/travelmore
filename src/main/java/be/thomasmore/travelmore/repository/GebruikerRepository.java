@@ -11,5 +11,5 @@ public class GebruikerRepository {
 
     public Gebruiker findById(int id){return entityManager.find(Gebruiker.class, id);}
 
-    public void inserrt(Gebruiker gebruiker){entityManager.persist(gebruiker);}
+    public void insert(Gebruiker gebruiker){entityManager.persist(gebruiker);}
 }
