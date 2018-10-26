@@ -9,6 +9,7 @@ public class Bus {
     @Id
     private int busID;
     @ManyToOne
+    @JoinColumn(name = "busTypeID")
     private BusType busType;
 
     public int getBusID() {

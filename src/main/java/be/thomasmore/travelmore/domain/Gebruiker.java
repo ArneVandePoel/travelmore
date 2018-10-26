@@ -29,6 +29,7 @@ public class Gebruiker {
     private String gemeente;
 
     @ManyToOne
+    @JoinColumn(name = "gebruikersTypeID")
     private GebruikersType gebruikersType;
 
     //getters, setters

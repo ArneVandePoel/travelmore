@@ -5,7 +5,16 @@ import java.util.Date;
 
 @Entity
 @Table(name="reis")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Reis.FIND_ALL,
+                        query = "SELECT r FROM Reis r"
+                )
+        }
+)
 public class Reis {
+    public static final String FIND_ALL = "Reis.findAll";
 
     //attributen
     @Id
@@ -30,10 +39,13 @@ public class Reis {
     private String beschrijving;
 
     @ManyToOne
+    @JoinColumn(name = "vertrekLocatieID")
     private Locatie vertrekLocatie;
     @ManyToOne
+    @JoinColumn(name = "hotelID")
     private Hotel hotel;
     @ManyToOne
+    @JoinColumn(name = "busID")
     private Bus bus;
 
     //getters, setters
