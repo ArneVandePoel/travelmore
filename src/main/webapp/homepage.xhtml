@@ -25,8 +25,17 @@
         <section>
             <div class="container">
                 <p:dataTable var="reis" value="#{reisController.getReizen()}" id="reizenDataTable">
-                    <p:column headerText="titel">
+                    <p:column headerText="prijs">
                         <h:outputText value="#{reis.prijs}" />
+                    </p:column>
+                    <p:column headerText="titel">
+                        <h:outputText value="#{reis.titel}" />
+                    </p:column>
+                    <p:column headerText="hotel">
+                        <h:outputText value="#{reis.hotel.naam}" />
+                    </p:column>
+                    <p:column headerText="bus">
+                        <h:outputText value="#{reis.bus.busType.type}" />
                     </p:column>
                 </p:dataTable>
             </div>
