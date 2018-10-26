@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <ui:composition template="index.xhtml">
+        <ui:define name="content">
+        <!-- Titel sectie 1 -->
+        <div id="reizen">
+            <div class="container">
+                <div class="span12 text-center">
+                    <div class="p-5">
+                        <h2 class="display-4">#{reisController.getReis(1).titel}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="container">
+                <table>
+                    <tr>
+                        <td>Vertrek-Aankomst heen:</td>
+                        <td><h:outputText value="#{reisController.getReis(1).tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - #{reisController.getReis(1).tijdstipAankomstHeen}</td>
+                    </tr>
+                    <tr>
+                        <td>Vertrek-Aankomst terug:</td>
+                        <td>#{reisController.getReis(1).tijdstipVertrekTerug} - #{reisController.getReis(1).tijdstipAankomstTerug}</td>
+                    </tr>
+                    <tr>
+                        <td>Beschrijving:</td>
+                        <td>#{reisController.getReis(1).beschrijving}</td>
+                    </tr>
+                    <tr>
+                        <td>Reis leider:</td>
+                        <td>#{reisController.getReis(1).reisLeiderNaam}</td>
+                    </tr>
+                    <tr>
+                        <td>Chauffeur:</td>
+                        <td>#{reisController.getReis(1).chauffeurNaam}</td>
+                    </tr>
+                    <tr>
+                        <td>Vertrek locatie:</td>
+                        <td>#{reisController.getReis(1).vertrekLocatie.adres}, #{reisController.getReis(1).vertrekLocatie.gemeente}</td>
+                    </tr>
+                    <tr>
+                        <td>Hotel:</td>
+                        <td>#{reisController.getReis(1).hotel.naam}</td>
+                    </tr>
+                    <tr>
+                        <td>Bus:</td>
+                        <td>#{reisController.getReis(1).bus.busType.type}</td>
+                    </tr>
+                    <tr>
+                        <td>Prijs:</td>
+                        <td>#{reisController.getReis(1).prijs}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </ui:define>
+    </ui:composition>
+</body>
+</html>
