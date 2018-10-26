@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <ui:composition template="index.xhtml">
+        <ui:define name="content">
+
+            <div id="reizen">
+                <div class="container">
+                    <div class="span12 text-center">
+                        <div class="p-5">
+                            <h2 class="display-4">Registreren</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="container mb-5">
+                    <h:form>
+                        <div class="form-group">
+                            <label for="email">E-mailadres:</label>
+                            <input type="text" class="form-control" id="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="wachtwoord">Wachtwoord:</label>
+                            <input type="password" class="form-control" id="wachtwoord" />
+                        </div>
+                        <div class="form-group">
+                            <label for="naam">Naam:</label>
+                            <input type="text" class="form-control" id="naam" />
+                        </div>
+                        <div class="form-group">
+                            <label for="voornaam">Voornaam:</label>
+                            <input type="text" class="form-control" id="voornaam" />
+                        </div>
+                        <div class="form-group">
+                            <label for="adres">Adres:</label>
+                            <input type="text" class="form-control" id="adres" />
+                        </div>
+                        <div class="form-group">
+                            <label for="postcode">Postcode:</label>
+                            <input type="text" class="form-control" id="postcode" />
+                        </div>
+                        <div class="form-group">
+                            <label for="gemeente">Gemeente:</label>
+                            <input type="text" class="form-control" id="gemeente" />
+                        </div>
+                        <div class="form-group">
+                            <label for="land">Land:</label>
+                            <input type="text" class="form-control" id="land" />
+                        </div>
+                        <div class="form-group">
+                            <label for="telefoonNummer">Telefoonnummer:</label>
+                            <input type="text" class="form-control" id="telefoonNummer" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registreren</button>
+                        <button class="btn btn-secondary">Annuleren</button>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</body>
+</html>

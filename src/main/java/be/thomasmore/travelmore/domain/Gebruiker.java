@@ -27,6 +27,8 @@ public class Gebruiker {
     private String postcode;
     @Column(name = "gemeente")
     private String gemeente;
+    @Column(name = "salt")
+    private String salt;
 
     @ManyToOne
     @JoinColumn(name = "gebruikersTypeID")
@@ -111,6 +113,14 @@ public class Gebruiker {
 
     public void setGemeente(String gemeente) {
         this.gemeente = gemeente;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public GebruikersType getGebruikersType() {
