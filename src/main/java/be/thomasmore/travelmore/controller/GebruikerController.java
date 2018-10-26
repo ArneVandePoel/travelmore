@@ -1,9 +1,11 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Gebruiker;
+import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
 import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
@@ -14,8 +16,17 @@ import java.security.SecureRandom;
 @ViewScoped
 public class GebruikerController {
 
+    @Inject
+    private GebruikerService gebruikerService;
+
     //gebruiker om aan te maken
     private Gebruiker newGebruiker = new Gebruiker();
+
+    //gebruiker aanmaken
+    public void maakGebruiker() throws NoSuchAlgorithmException{
+        encryptPassword(newGebruiker.getWachtwoord());
+        this.gebruikerService.insert(newGebruiker);
+    }
 
     //Passwoord valideren
     public static void checkPassword(String inputPassword, byte[] salt){
@@ -28,7 +39,7 @@ public class GebruikerController {
         String securePassword = get_SHA_512_SecurePassword(passwordToHash, salt);
         String saltString = new String(salt);
 
-        newGebruiker.setWacthwoord(securePassword);
+        newGebruiker.setWachtwoord(securePassword);
         newGebruiker.setSalt(saltString);
         System.out.println(saltString);
     }

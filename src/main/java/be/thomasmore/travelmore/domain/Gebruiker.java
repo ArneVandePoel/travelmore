@@ -12,7 +12,7 @@ public class Gebruiker {
     @Column(name = "email")
     private String email;
     @Column(name = "wachtwoord")
-    private String wacthwoord;
+    private String wachtwoord;
     @Column(name = "naam")
     private String naam;
     @Column(name = "voornaam")
@@ -51,12 +51,12 @@ public class Gebruiker {
         this.email = email;
     }
 
-    public String getWacthwoord() {
-        return wacthwoord;
+    public String getWachtwoord() {
+        return wachtwoord;
     }
 
-    public void setWacthwoord(String wacthwoord) {
-        this.wacthwoord = wacthwoord;
+    public void setWachtwoord(String wacthwoord) {
+        this.wachtwoord = wacthwoord;
     }
 
     public String getNaam() {
