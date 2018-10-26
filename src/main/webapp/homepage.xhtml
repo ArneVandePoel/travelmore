@@ -24,22 +24,71 @@
 
         <section>
             <div class="container">
+                <div class="row align-items-center mt-4 mb-4">
+                    <div class="col-lg-12">
+
+
+                        <ui:repeat value="#{reisController.getReizen()}" var="reis">
+
+                        <div class="col-lg-5" style="float: left;"><img style="width:400px;" class="rounded-pill img-fluid" src="img/hiltongardeninn.jpg" alt=""/></div>
+                        <div class="col-lg-5" style="float: left;">
+                            <table align="center" width="100%" cellpadding="20">
+                                <tr>
+                                    <td colspan="3"><b><h4>Hilton Garden Inn Milan</h4></b></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul class="extras">
+                                            <li>Kamer met ontbijt</li>
+                                            <li>Wifi</li>
+                                            <li>18+</li>
+                                        </ul>
+                                    </td>
+                                    <td>4 Sterren</td>
+                                    <td>7 Dagen</td>
+                                    <td>
+                                        <ul class="noIcon">
+                                            <li class="subtext">Vanaf</li>
+                                            <li class="prijstext">319€</li>
+                                            <li class="subtext">Per persoon</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-2" style="float: left;"><a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a></div>
+
+                        </ui:repeat>
+
+
+                    </div>
+                </div>
+
+
                 <p:dataTable var="reis" value="#{reisController.getReizen()}" id="reizenDataTable">
-                    <p:column headerText="prijs">
+                    <p:column headerText="Prijs">
                         <h:outputText value="#{reis.prijs}" />
                     </p:column>
-                    <p:column headerText="titel">
+                    <p:column headerText="Reis Titel">
                         <h:outputText value="#{reis.titel}" />
                     </p:column>
-                    <p:column headerText="hotel">
+                    <p:column headerText="Hotel">
                         <h:outputText value="#{reis.hotel.naam}" />
                     </p:column>
-                    <p:column headerText="bus">
+                    <p:column headerText="Type busreis">
                         <h:outputText value="#{reis.bus.busType.type}" />
+                    </p:column>
+                    <p:column headerText="Vertrekplaats">
+                        <h:outputText value="#{reis.vertrekLocatie.land}" />
+                        <h:outputText value="#{reis.vertrekLocatie.adres}" />
+                        <h:outputText value="#{reis.vertrekLocatie.postcode}" />
+                        <h:outputText value="#{reis.vertrekLocatie.gemeente}" />
+
                     </p:column>
                 </p:dataTable>
             </div>
         </section>
     </ui:composition>
+    <br></br>
 </body>
 </html>

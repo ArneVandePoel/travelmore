@@ -17,4 +17,6 @@ public class ReisController {
     public List<Reis> getReizen() {
         return this.reisService.findAllReizen();
     }
+
+    public Reis getReis(int id) {return this.reisService.findReis(id);}
 }

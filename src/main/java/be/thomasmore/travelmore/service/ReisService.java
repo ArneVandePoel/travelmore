@@ -11,4 +11,6 @@ public class ReisService {
     private ReisRepository reisRepository;
 
     public List<Reis> findAllReizen(){return reisRepository.findAll();}
+
+    public Reis findReis(int id){return reisRepository.findById(id);}
 }
