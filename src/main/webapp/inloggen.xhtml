@@ -28,13 +28,13 @@
                     <h:form>
                         <div class="form-group">
                             <label for="email">E-mailadres:</label>
-                            <input type="text" class="form-control" id="email" />
+                            <h:inputText class="form-control" binding="#{email}" id="email"/>
                         </div>
                         <div class="form-group">
                             <label for="wachtwoord">Wachtwoord:</label>
-                            <input type="password" class="form-control" id="wachtwoord" />
+                            <h:inputText class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Aanmelden</button>
+                        <h:commandButton class="btn btn-primary" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
                         <button class="btn btn-secondary">Annuleren</button>
                     </h:form>
                 </div>

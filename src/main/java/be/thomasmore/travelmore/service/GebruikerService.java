@@ -10,4 +10,6 @@ public class GebruikerService {
     private GebruikerRepository gebruikerRepository;
 
     public void insert(Gebruiker gebruiker) {gebruikerRepository.insert(gebruiker);}
+
+    public Gebruiker findGebruikerByEmail(String email){return gebruikerRepository.findByEmail(email);}
 }

@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
 <head>
     <title>Title</title>
 </head>
@@ -28,41 +29,41 @@
                     <h:form>
                         <div class="form-group">
                             <label for="email">E-mailadres:</label>
-                            <input type="text" class="form-control" id="email" />
+                            <h:inputText class="form-control" binding="#{email}" id="email"/>
                         </div>
                         <div class="form-group">
                             <label for="wachtwoord">Wachtwoord:</label>
-                            <input type="password" class="form-control" id="wachtwoord" />
+                            <h:inputText class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
                         </div>
                         <div class="form-group">
                             <label for="naam">Naam:</label>
-                            <input type="text" class="form-control" id="naam" />
+                            <h:inputText class="form-control" binding="#{naam}" id="naam"/>
                         </div>
                         <div class="form-group">
                             <label for="voornaam">Voornaam:</label>
-                            <input type="text" class="form-control" id="voornaam" />
+                            <h:inputText class="form-control" binding="#{voornaam}" id="voornaam"/>
                         </div>
                         <div class="form-group">
                             <label for="adres">Adres:</label>
-                            <input type="text" class="form-control" id="adres" />
+                            <h:inputText class="form-control" binding="#{adres}" id="adres"/>
                         </div>
                         <div class="form-group">
                             <label for="postcode">Postcode:</label>
-                            <input type="text" class="form-control" id="postcode" />
+                            <h:inputText t:type="number" class="form-control" binding="#{postcode}" id="postcode"/>
                         </div>
                         <div class="form-group">
                             <label for="gemeente">Gemeente:</label>
-                            <input type="text" class="form-control" id="gemeente" />
+                            <h:inputText class="form-control" binding="#{gemeente}" id="gemeente"/>
                         </div>
                         <div class="form-group">
                             <label for="land">Land:</label>
-                            <input type="text" class="form-control" id="land" />
+                            <h:inputText class="form-control" binding="#{land}" id="land"/>
                         </div>
                         <div class="form-group">
                             <label for="telefoonNummer">Telefoonnummer:</label>
-                            <input type="text" class="form-control" id="telefoonNummer" />
+                            <h:inputText class="form-control" binding="#{telefoonNummer}" id="telefoonNummer"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Registreren</button>
+                        <h:commandButton class="btn btn-primary" value="Registreren" action="#{gebruikerController.maakGebruiker(email.value, wachtwoord.value, naam.value, voornaam.value, adres.value, postcode.value, gemeente.value, land.value, telefoonNummer.value)}"/>
                         <button class="btn btn-secondary">Annuleren</button>
                     </h:form>
                 </div>

@@ -1,6 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Gebruiker;
+import be.thomasmore.travelmore.domain.GebruikersType;
 import be.thomasmore.travelmore.service.GebruikerService;
 
 import javax.faces.bean.ManagedBean;
@@ -20,11 +21,41 @@ public class GebruikerController {
     private GebruikerService gebruikerService;
 
     //gebruiker om aan te maken
+    private Gebruiker ingelogdeGebruiker = new Gebruiker();
     private Gebruiker newGebruiker = new Gebruiker();
 
+    //inloggen
+    public void login(String email, String wachtwoord){
+        Gebruiker test = this.gebruikerService.findGebruikerByEmail(email);
+        String saltString = test.getSalt();
+        byte[] salt = saltString.getBytes();
+
+        //wachtwoord checken
+        String passwordToCheck = get_SHA_512_SecurePassword(wachtwoord, salt);
+        String password = get_SHA_512_SecurePassword(test.getWachtwoord(), salt);
+
+        if(passwordToCheck == password){
+            ingelogdeGebruiker = test;
+            System.out.println("successfull login!");
+        }
+    }
+
     //gebruiker aanmaken
-    public void maakGebruiker() throws NoSuchAlgorithmException{
-        encryptPassword(newGebruiker.getWachtwoord());
+    public void maakGebruiker(String email, String wachtwoord, String naam, String voornaam, String adres, String postcode, String gemeente, String land, String telefoonNummer) throws NoSuchAlgorithmException{
+        newGebruiker.setEmail(email);
+        newGebruiker.setNaam(naam);
+        newGebruiker.setVoornaam(voornaam);
+        newGebruiker.setAdres(adres);
+        newGebruiker.setPostcode(postcode);
+        newGebruiker.setGemeente(gemeente);
+        newGebruiker.setLand(land);
+        newGebruiker.setTelefoonNummer(telefoonNummer);
+
+        GebruikersType type = new GebruikersType();
+        type.setType("klant");
+        newGebruiker.setGebruikersType(type);
+
+        encryptPassword(wachtwoord);
         this.gebruikerService.insert(newGebruiker);
     }
 

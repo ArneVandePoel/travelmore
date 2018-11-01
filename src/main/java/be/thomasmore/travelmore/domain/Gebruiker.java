@@ -4,7 +4,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "gebruiker")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Gebruiker.FIND_MAIL,
+                        query = "SELECT g FROM Gebruiker g WHERE (g.email) = :email"
+                )
+        }
+)
 public class Gebruiker {
+    public static final String FIND_MAIL = "Gebruiker.findMail";
 
     //attributen
     @Id
