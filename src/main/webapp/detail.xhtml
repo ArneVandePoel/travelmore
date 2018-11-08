@@ -28,11 +28,11 @@
                 <table>
                     <tr>
                         <td>Vertrek-Aankomst heen:</td>
-                        <td><h:outputText value="#{reisController.getReis(1).tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - #{reisController.getReis(1).tijdstipAankomstHeen}</td>
+                        <td><h:outputText value="#{reisController.getReis(1).tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reisController.getReis(1).tijdstipAankomstHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
                     </tr>
                     <tr>
                         <td>Vertrek-Aankomst terug:</td>
-                        <td>#{reisController.getReis(1).tijdstipVertrekTerug} - #{reisController.getReis(1).tijdstipAankomstTerug}</td>
+                        <td><h:outputText value="#{reisController.getReis(1).tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reisController.getReis(1).tijdstipAankomstTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
                     </tr>
                     <tr>
                         <td>Beschrijving:</td>
@@ -60,7 +60,7 @@
                     </tr>
                     <tr>
                         <td>Prijs:</td>
-                        <td>#{reisController.getReis(1).prijs}</td>
+                        <td>€ <h:outputText value= '#{reisController.getReis(1).prijs}'><f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/></h:outputText></td>
                     </tr>
                 </table>
             </div>
