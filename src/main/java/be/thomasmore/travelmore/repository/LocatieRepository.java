@@ -17,4 +17,9 @@ public class LocatieRepository {
     }
 
     public void insert(Locatie locatie){entityManager.persist(locatie);}
+
+    public void deleteById(int id) {
+        Locatie locatie = this.findById(id);
+        entityManager.remove(locatie);
+    }
 }

@@ -18,4 +18,6 @@ public class LocatieService {
     public List<Locatie> findAllLocaties() { return locatieRepository.findAll(); }
 
     public void insert(Locatie locatie) { locatieRepository.insert(locatie); }
+
+    public void deleteById(int id) { locatieRepository.deleteById(id); }
 }
