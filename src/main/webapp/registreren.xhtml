@@ -24,48 +24,52 @@
                 </div>
             </div>
 
-            <div>
-                <div class="container mb-5">
-                    <h:form>
-                        <div class="form-group">
-                            <label for="email">E-mailadres:</label>
-                            <h:inputText class="form-control" binding="#{email}" id="email"/>
+            <div class="mb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h:form>
+                                <div class="form-group">
+                                    <label for="email">E-mailadres:</label>
+                                    <h:inputText class="form-control" binding="#{email}" id="email"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="wachtwoord">Wachtwoord:</label>
+                                    <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="naam">Naam:</label>
+                                    <h:inputText class="form-control" binding="#{naam}" id="naam"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="voornaam">Voornaam:</label>
+                                    <h:inputText class="form-control" binding="#{voornaam}" id="voornaam"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="adres">Adres:</label>
+                                    <h:inputText class="form-control" binding="#{adres}" id="adres"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postcode">Postcode:</label>
+                                    <h:inputText t:type="number" class="form-control" binding="#{postcode}" id="postcode"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gemeente">Gemeente:</label>
+                                    <h:inputText class="form-control" binding="#{gemeente}" id="gemeente"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="land">Land:</label>
+                                    <h:inputText class="form-control" binding="#{land}" id="land"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefoonNummer">Telefoonnummer:</label>
+                                    <h:inputText class="form-control" binding="#{telefoonNummer}" id="telefoonNummer"/>
+                                </div>
+                                <h:commandButton class="btn btn-primary mr-1" value="Registreren" action="#{gebruikerController.maakGebruiker(email.value, wachtwoord.value, naam.value, voornaam.value, adres.value, postcode.value, gemeente.value, land.value, telefoonNummer.value)}"/>
+                                <h:button class="btn btn-secondary" value="Annuleren" outcome="index" />
+                            </h:form>
                         </div>
-                        <div class="form-group">
-                            <label for="wachtwoord">Wachtwoord:</label>
-                            <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="naam">Naam:</label>
-                            <h:inputText class="form-control" binding="#{naam}" id="naam"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="voornaam">Voornaam:</label>
-                            <h:inputText class="form-control" binding="#{voornaam}" id="voornaam"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="adres">Adres:</label>
-                            <h:inputText class="form-control" binding="#{adres}" id="adres"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="postcode">Postcode:</label>
-                            <h:inputText t:type="number" class="form-control" binding="#{postcode}" id="postcode"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="gemeente">Gemeente:</label>
-                            <h:inputText class="form-control" binding="#{gemeente}" id="gemeente"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="land">Land:</label>
-                            <h:inputText class="form-control" binding="#{land}" id="land"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefoonNummer">Telefoonnummer:</label>
-                            <h:inputText class="form-control" binding="#{telefoonNummer}" id="telefoonNummer"/>
-                        </div>
-                        <h:commandButton class="btn btn-primary" value="Registreren" action="#{gebruikerController.maakGebruiker(email.value, wachtwoord.value, naam.value, voornaam.value, adres.value, postcode.value, gemeente.value, land.value, telefoonNummer.value)}"/>
-                        <button class="btn btn-secondary">Annuleren</button>
-                    </h:form>
+                    </div>
                 </div>
             </div>
         </ui:define>

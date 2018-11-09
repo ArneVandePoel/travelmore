@@ -23,20 +23,24 @@
                 </div>
             </div>
 
-            <div>
-                <div class="container mb-5">
-                    <h:form>
-                        <div class="form-group">
-                            <label for="email">E-mailadres:</label>
-                            <h:inputText class="form-control" binding="#{email}" id="email"/>
+            <div class="mb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h:form>
+                                <div class="form-group">
+                                    <label for="email">E-mailadres:</label>
+                                    <h:inputText class="form-control" binding="#{email}" id="email"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="wachtwoord">Wachtwoord:</label>
+                                    <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
+                                </div>
+                                <h:commandButton class="btn btn-primary" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
+                                <h:button class="btn btn-secondary" value="Annuleren" outcome="index" />
+                            </h:form>
                         </div>
-                        <div class="form-group">
-                            <label for="wachtwoord">Wachtwoord:</label>
-                            <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
-                        </div>
-                        <h:commandButton class="btn btn-primary" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
-                        <button class="btn btn-secondary">Annuleren</button>
-                    </h:form>
+                    </div>
                 </div>
             </div>
         </ui:define>
