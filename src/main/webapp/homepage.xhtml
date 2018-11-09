@@ -36,10 +36,10 @@
                         <div class="col-lg-7" style="float: right;">
                             <table align="center" width="100%">
                                 <tr>
-                                    <td colspan="3"><b><h4>#{reis.hotel.naam}</h4></b></td>
+                                    <td colspan="3"><b><h4>#{reis.titel}</h4></b></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3"><p>#{reis.titel}</p></td>
+                                    <td colspan="3"><p>#{reis.hotel.naam}</p></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -68,7 +68,12 @@
                                             <li>Terug: <h:outputText value="#{reis.tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy"/> </h:outputText></li>
                                         </ul>
                                     </td>
-                                    <td><div style="float: left;"><a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a></div></td>
+                                    <h:form>
+                                    <td><div style="float: left;">
+                                        <!--<a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a>-->
+                                        <h:commandLink value = "Boek nu!" action = "#{reisController.getReisDetail(reis.reisID)}" class="btn btn-primary btn-l rounded-pill mt-2" />
+                                    </div></td>
+                                    </h:form>
                                 </tr>
                             </table>
                         </div>
