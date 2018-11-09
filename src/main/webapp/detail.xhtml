@@ -55,6 +55,32 @@
                         <td>#{reisController.getReis(1).hotel.naam}</td>
                     </tr>
                     <tr>
+                        <td style="vertical-align: top">Extras:</td>
+                        <td><ul>
+                            <ui:repeat value="#{reisController.getExtras(reisController.getReis(1).reisID)}" var="extra">
+
+                                <li>#{extra}</li>
+
+                            </ui:repeat>
+                        </ul></td>
+                    </tr>
+                    <tr>
+                        <td>Land:</td>
+                        <td>#{reisController.getReis(1).hotel.land}</td>
+                    </tr>
+                    <tr>
+                        <td>Adres:</td>
+                        <td>#{reisController.getReis(1).hotel.adres}, #{reisController.getReis(1).hotel.postcode} #{reisController.getReis(1).hotel.gemeente}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefoonnummer:</td>
+                        <td>#{reisController.getReis(1).hotel.telefoonNummer}</td>
+                    </tr>
+                    <tr>
+                        <td>Aantal Sterren:</td>
+                        <td>#{reisController.getReis(1).hotel.aantalSterren} sterren</td>
+                    </tr>
+                    <tr>
                         <td>Bus:</td>
                         <td>#{reisController.getReis(1).bus.busType.type}</td>
                     </tr>
