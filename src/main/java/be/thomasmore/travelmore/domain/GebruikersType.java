@@ -1,9 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "gebruikerstype")
@@ -11,6 +8,7 @@ public class GebruikersType {
 
     //attributen
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gebruikersTypeID;
     @Column(name = "type")
     private String type;

@@ -17,7 +17,12 @@ public class GebruikerRepository {
         Query q = entityManager.createNamedQuery(Gebruiker.FIND_MAIL, Gebruiker.class);
         q.setParameter("email", email);
         List<Gebruiker> resultaat = q.getResultList();
-        return resultaat.get(0);
+
+        if (resultaat.size() > 0){
+            return resultaat.get(0);
+        }else{
+            return null;
+        }
     }
 
     public void insert(Gebruiker gebruiker){entityManager.persist(gebruiker);}

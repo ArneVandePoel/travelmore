@@ -10,6 +10,4 @@ public class BusTypeRepository {
     private EntityManager entityManager;
 
     public BusType findById(int id) {return entityManager.find(BusType.class, id);}
-
-    public void insert(BusType busType){entityManager.persist(busType);}
 }

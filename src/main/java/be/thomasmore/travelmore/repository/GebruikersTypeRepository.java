@@ -10,6 +10,4 @@ public class GebruikersTypeRepository {
     private EntityManager entityManager;
 
     public GebruikersType findById(int id){return entityManager.find(GebruikersType.class, id);}
-
-    public void insert(GebruikersType gebruikersType) {entityManager.persist(gebruikersType);}
 }
