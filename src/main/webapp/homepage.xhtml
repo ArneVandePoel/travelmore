@@ -25,15 +25,16 @@
 
         <section>
             <div class="container">
-                <div class="row align-items-center mt-4 mb-4">
+                <ui:repeat value="#{reisController.getReizen()}" var="reis">
+                <div class="row align-items-center">
                     <div class="col-lg-12">
 
 
-                        <ui:repeat value="#{reisController.getReizen()}" var="reis">
+
 
                         <div class="col-lg-5" style="float: left;"><img style="width:400px;" class="rounded-pill img-fluid" src="#{reis.afbeelding}" alt=""/></div>
-                        <div class="col-lg-6" style="float: left;">
-                            <table align="center" width="100%" cellpadding="2">
+                        <div class="col-lg-7" style="float: right;">
+                            <table align="center" width="100%">
                                 <tr>
                                     <td colspan="3"><b><h4>#{reis.hotel.naam}</h4></b></td>
                                 </tr>
@@ -43,13 +44,13 @@
                                 <tr>
                                     <td>
                                         <ul class="extras">
-                                            <li>#{reis.hotel.extra}</li>
-                                            <li>test</li>
-                                            <li>test</li>
+                                            <ui:repeat value="#{reisController.getExtras(reis.reisID)}" var="extra">
+
+                                                <li>#{extra}</li>
+
+                                            </ui:repeat>
                                         </ul>
                                     </td>
-                                    <td>#{reis.hotel.aantalSterren} sterren</td>
-                                    <td></td>
                                     <td>
                                         <ul class="noIcon">
                                             <li class="subtext">Vanaf</li>
@@ -59,30 +60,22 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Vertreklocatie: #{reis.vertrekLocatie.land} #{reis.vertrekLocatie.adres}</td>
-                                    <td colspan="3">
+                                    <td>#{reis.hotel.aantalSterren} sterren</td>
+                                    <td>
                                         <ul class="noIcon">
                                             <li>Heen:  <h:outputText value="#{reis.tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy"/> </h:outputText></li>
 
                                             <li>Terug: <h:outputText value="#{reis.tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy"/> </h:outputText></li>
                                         </ul>
                                     </td>
-                                    <td></td>
-                                    <td><div class="col-lg-2" style="float: left;"><a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a></div></td>
+                                    <td><div style="float: left;"><a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a></div></td>
                                 </tr>
                             </table>
-
-                            <hr></hr>
-
                         </div>
-
-
-
-                        </ui:repeat>
-
-
                     </div>
                 </div>
+                    <hr></hr>
+                </ui:repeat>
             </div>
         </section>
     </ui:composition>

@@ -19,4 +19,10 @@ public class ReisController {
     }
 
     public Reis getReis(int id) {return this.reisService.findReis(id);}
+
+    public  String[] getExtras(int id){
+        Reis reis = this.reisService.findReis(id);
+        String[] extras = reis.getHotel().getExtra().split(";");
+        return extras;
+    }
 }
