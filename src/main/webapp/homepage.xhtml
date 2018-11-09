@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">>
 <head>
     <title>Title</title>
 </head>
@@ -30,22 +31,25 @@
 
                         <ui:repeat value="#{reisController.getReizen()}" var="reis">
 
-                        <div class="col-lg-5" style="float: left;"><img style="width:400px;" class="rounded-pill img-fluid" src="img/hiltongardeninn.jpg" alt=""/></div>
-                        <div class="col-lg-5" style="float: left;">
-                            <table align="center" width="100%" cellpadding="20">
+                        <div class="col-lg-5" style="float: left;"><img style="width:400px;" class="rounded-pill img-fluid" src="#{reis.afbeelding}" alt=""/></div>
+                        <div class="col-lg-6" style="float: left;">
+                            <table align="center" width="100%" cellpadding="2">
                                 <tr>
                                     <td colspan="3"><b><h4>#{reis.hotel.naam}</h4></b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><p>#{reis.titel}</p></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <ul class="extras">
                                             <li>#{reis.hotel.extra}</li>
-                                            <li>Wifi</li>
-                                            <li>18+</li>
+                                            <li>test</li>
+                                            <li>test</li>
                                         </ul>
                                     </td>
-                                    <td>4 Sterren</td>
-                                    <td>7 Dagen</td>
+                                    <td>#{reis.hotel.aantalSterren} sterren</td>
+                                    <td></td>
                                     <td>
                                         <ul class="noIcon">
                                             <li class="subtext">Vanaf</li>
@@ -54,38 +58,31 @@
                                         </ul>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Vertreklocatie: #{reis.vertrekLocatie.land} #{reis.vertrekLocatie.adres}</td>
+                                    <td colspan="3">
+                                        <ul class="noIcon">
+                                            <li>Heen:  <h:outputText value="#{reis.tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy"/> </h:outputText></li>
+
+                                            <li>Terug: <h:outputText value="#{reis.tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy"/> </h:outputText></li>
+                                        </ul>
+                                    </td>
+                                    <td></td>
+                                    <td><div class="col-lg-2" style="float: left;"><a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a></div></td>
+                                </tr>
                             </table>
+
+                            <hr></hr>
+
                         </div>
-                        <div class="col-lg-2" style="float: left;"><a href="" class="btn btn-primary btn-l rounded-pill mt-2">Boek nu!</a></div>
+
+
 
                         </ui:repeat>
 
 
                     </div>
                 </div>
-
-
-                <p:dataTable var="reis" value="#{reisController.getReizen()}" id="reizenDataTable">
-                    <p:column headerText="Prijs">
-                        <h:outputText value="#{reis.prijs}" />
-                    </p:column>
-                    <p:column headerText="Reis Titel">
-                        <h:outputText value="#{reis.titel}" />
-                    </p:column>
-                    <p:column headerText="Hotel">
-                        <h:outputText value="#{reis.hotel.naam}" />
-                    </p:column>
-                    <p:column headerText="Type busreis">
-                        <h:outputText value="#{reis.bus.busType.type}" />
-                    </p:column>
-                    <p:column headerText="Vertrekplaats">
-                        <h:outputText value="#{reis.vertrekLocatie.land}" />
-                        <h:outputText value="#{reis.vertrekLocatie.adres}" />
-                        <h:outputText value="#{reis.vertrekLocatie.postcode}" />
-                        <h:outputText value="#{reis.vertrekLocatie.gemeente}" />
-
-                    </p:column>
-                </p:dataTable>
             </div>
         </section>
     </ui:composition>

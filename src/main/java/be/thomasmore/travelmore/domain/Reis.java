@@ -37,6 +37,8 @@ public class Reis {
     private String titel;
     @Column(name = "beschrijving")
     private String beschrijving;
+    @Column(name = "afbeelding")
+    private String afbeelding;
 
     @ManyToOne
     @JoinColumn(name = "vertrekLocatieID")
@@ -152,4 +154,10 @@ public class Reis {
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
     }
+
+    public String getAfbeelding() {
+        return afbeelding;
+    }
+
+    public void setAfbeelding(String afbeelding) { this.afbeelding = afbeelding; }
 }
