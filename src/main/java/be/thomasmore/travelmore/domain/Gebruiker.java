@@ -39,7 +39,7 @@ public class Gebruiker {
     @Column(name = "salt")
     private String salt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "gebruikersTypeID")
     private GebruikersType gebruikersType;
 

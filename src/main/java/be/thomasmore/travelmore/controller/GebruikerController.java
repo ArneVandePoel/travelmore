@@ -50,10 +50,10 @@ public class GebruikerController {
         newGebruiker.setGemeente(gemeente);
         newGebruiker.setLand(land);
         newGebruiker.setTelefoonNummer(telefoonNummer);
-
+/*
         GebruikersType type = new GebruikersType();
         type.setType("klant");
-        newGebruiker.setGebruikersType(type);
+        newGebruiker.setGebruikersType(type);*/
 
         encryptPassword(wachtwoord);
         this.gebruikerService.insert(newGebruiker);
