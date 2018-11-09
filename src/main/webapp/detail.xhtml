@@ -14,10 +14,11 @@
         <ui:define name="content">
         <!-- Titel sectie 1 -->
         <div id="reizen">
+            #{reis = reisController.getReis(1)}
             <div class="container">
                 <div class="span12 text-center">
                     <div class="p-5">
-                        <h2 class="display-4">#{reisController.getReis(1).titel}</h2>
+                        <h2 class="display-4">#{reis.titel}</h2>
                     </div>
                 </div>
             </div>
@@ -28,36 +29,36 @@
                 <table>
                     <tr>
                         <td>Vertrek-Aankomst heen:</td>
-                        <td><h:outputText value="#{reisController.getReis(1).tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reisController.getReis(1).tijdstipAankomstHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
+                        <td><h:outputText value="#{reis.tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reis.tijdstipAankomstHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
                     </tr>
                     <tr>
                         <td>Vertrek-Aankomst terug:</td>
-                        <td><h:outputText value="#{reisController.getReis(1).tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reisController.getReis(1).tijdstipAankomstTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
+                        <td><h:outputText value="#{reis.tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reis.tijdstipAankomstTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
                     </tr>
                     <tr>
                         <td>Beschrijving:</td>
-                        <td>#{reisController.getReis(1).beschrijving}</td>
+                        <td>#{reis.beschrijving}</td>
                     </tr>
                     <tr>
                         <td>Reis leider:</td>
-                        <td>#{reisController.getReis(1).reisLeiderNaam}</td>
+                        <td>#{reis.reisLeiderNaam}</td>
                     </tr>
                     <tr>
                         <td>Chauffeur:</td>
-                        <td>#{reisController.getReis(1).chauffeurNaam}</td>
+                        <td>#{reis.chauffeurNaam}</td>
                     </tr>
                     <tr>
                         <td>Vertrek locatie:</td>
-                        <td>#{reisController.getReis(1).vertrekLocatie.adres}, #{reisController.getReis(1).vertrekLocatie.gemeente}</td>
+                        <td>#{reis.vertrekLocatie.adres}, #{reis.vertrekLocatie.gemeente}</td>
                     </tr>
                     <tr>
                         <td>Hotel:</td>
-                        <td>#{reisController.getReis(1).hotel.naam}</td>
+                        <td>#{reis.hotel.naam}</td>
                     </tr>
                     <tr>
                         <td style="vertical-align: top">Extras:</td>
                         <td><ul>
-                            <ui:repeat value="#{reisController.getExtras(reisController.getReis(1).reisID)}" var="extra">
+                            <ui:repeat value="#{reisController.getExtras(reis.reisID)}" var="extra">
 
                                 <li>#{extra}</li>
 
@@ -66,27 +67,27 @@
                     </tr>
                     <tr>
                         <td>Land:</td>
-                        <td>#{reisController.getReis(1).hotel.land}</td>
+                        <td>#{reis.hotel.land}</td>
                     </tr>
                     <tr>
                         <td>Adres:</td>
-                        <td>#{reisController.getReis(1).hotel.adres}, #{reisController.getReis(1).hotel.postcode} #{reisController.getReis(1).hotel.gemeente}</td>
+                        <td>#{reis.hotel.adres}, #{reis.hotel.postcode} #{reis.hotel.gemeente}</td>
                     </tr>
                     <tr>
                         <td>Telefoonnummer:</td>
-                        <td>#{reisController.getReis(1).hotel.telefoonNummer}</td>
+                        <td>#{reis.hotel.telefoonNummer}</td>
                     </tr>
                     <tr>
                         <td>Aantal Sterren:</td>
-                        <td>#{reisController.getReis(1).hotel.aantalSterren} sterren</td>
+                        <td>#{reis.hotel.aantalSterren} sterren</td>
                     </tr>
                     <tr>
                         <td>Bus:</td>
-                        <td>#{reisController.getReis(1).bus.busType.type}</td>
+                        <td>#{reis.bus.busType.type}</td>
                     </tr>
                     <tr>
                         <td>Prijs:</td>
-                        <td>€ <h:outputText value= '#{reisController.getReis(1).prijs}'><f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/></h:outputText></td>
+                        <td>€ <h:outputText value= '#{reis.prijs}'><f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/></h:outputText></td>
                     </tr>
                 </table>
             </div>
