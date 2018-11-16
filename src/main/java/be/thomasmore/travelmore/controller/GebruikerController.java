@@ -4,20 +4,17 @@ import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.domain.GebruikersType;
 import be.thomasmore.travelmore.service.GebruikerService;
 import be.thomasmore.travelmore.service.GebruikersTypeService;
-import sun.misc.BASE64Encoder;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
@@ -47,10 +44,11 @@ public class GebruikerController {
     //string voor melding pagina
     private String melding;
 
-    //melding ophalen
+    //getters, setters
     public String getMelding(){
         return this.melding;
     }
+    public Gebruiker getIngelogdeGebruiker() {return this.ingelogdeGebruiker;}
 
     //inloggen
     public String login(String email, String wachtwoord){
@@ -68,7 +66,7 @@ public class GebruikerController {
             System.out.println(password);
 
             if(passwordToCheck.equalsIgnoreCase(password)){
-                ingelogdeGebruiker = gebruiker;
+                this.ingelogdeGebruiker = gebruiker;
                 this.melding = "U bent ingelogd als: " + ingelogdeGebruiker.getVoornaam() + " " + ingelogdeGebruiker.getNaam();
             }else{
                 this.melding = "Fout wachtwoord!";

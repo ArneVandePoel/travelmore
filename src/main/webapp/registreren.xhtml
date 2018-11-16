@@ -31,39 +31,39 @@
                             <h:form>
                                 <div class="form-group">
                                     <label for="email">E-mailadres:</label>
-                                    <h:inputText class="form-control" binding="#{email}" id="email"/>
+                                    <h:inputText class="form-control" binding="#{email}" id="email" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="wachtwoord">Wachtwoord:</label>
-                                    <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
+                                    <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="naam">Naam:</label>
-                                    <h:inputText class="form-control" binding="#{naam}" id="naam"/>
+                                    <h:inputText class="form-control" binding="#{naam}" id="naam" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="voornaam">Voornaam:</label>
-                                    <h:inputText class="form-control" binding="#{voornaam}" id="voornaam"/>
+                                    <h:inputText class="form-control" binding="#{voornaam}" id="voornaam" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="adres">Adres:</label>
-                                    <h:inputText class="form-control" binding="#{adres}" id="adres"/>
+                                    <h:inputText class="form-control" binding="#{adres}" id="adres" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="postcode">Postcode:</label>
-                                    <h:inputText t:type="number" class="form-control" binding="#{postcode}" id="postcode"/>
+                                    <h:inputText t:type="number" class="form-control" binding="#{postcode}" id="postcode" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="gemeente">Gemeente:</label>
-                                    <h:inputText class="form-control" binding="#{gemeente}" id="gemeente"/>
+                                    <h:inputText class="form-control" binding="#{gemeente}" id="gemeente" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="land">Land:</label>
-                                    <h:inputText class="form-control" binding="#{land}" id="land"/>
+                                    <h:inputText class="form-control" binding="#{land}" id="land" required="true"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="telefoonNummer">Telefoonnummer:</label>
-                                    <h:inputText class="form-control" binding="#{telefoonNummer}" id="telefoonNummer"/>
+                                    <h:inputText class="form-control" binding="#{telefoonNummer}" id="telefoonNummer" required="true"/>
                                 </div>
                                 <h:commandButton class="btn btn-primary mr-1" value="Registreren" action="#{gebruikerController.maakGebruiker(email.value, wachtwoord.value, naam.value, voornaam.value, adres.value, postcode.value, gemeente.value, land.value, telefoonNummer.value)}"/>
                                 <h:button class="btn btn-secondary" value="Annuleren" outcome="index" />

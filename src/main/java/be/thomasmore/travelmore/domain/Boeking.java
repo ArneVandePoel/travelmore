@@ -12,11 +12,13 @@ public class Boeking {
     private boolean isBetaald;
     @Column(name = "bedrag")
     private double bedrag;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "gebruikerID")
     private Gebruiker gebruiker;
     @OneToOne(mappedBy="boeking")
     private Betaling betaling;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "reisID")
     private Reis reis;
 
     public int getBoekingID() {

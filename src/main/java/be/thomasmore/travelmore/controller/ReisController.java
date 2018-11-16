@@ -36,6 +36,6 @@ public class ReisController {
     public String getReisDetail(int id){
         this.reis = this.reisService.findReis(id);
 
-        return "detail";
+        return "detail?faces-redirect=true";
     }
 }

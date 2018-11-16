@@ -30,7 +30,7 @@
     <h:form>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
-            <h:commandLink value = "Busreizen TravelMore" action = "index" class="navbar-brand" />
+            <h:link value="Busreizen TravelMore" outcome="index" class="navbar-brand"/>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,8 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <h:commandLink value = "Inloggen" action = "inloggen" class="nav-link" />
-                        <h:commandLink value = "Registreren" action = "registreren" class="nav-link" />
+                        <h:link value="Inloggen" outcome="inloggen" class="nav-link"/>
+                        <h:link value="Registreren" outcome="registreren" class="nav-link"/>
                     </li>
                 </ul>
             </div>
