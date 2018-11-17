@@ -1,13 +1,19 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "betalingsmethoden")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = BetalingsMethoden.FIND_ALL,
+                        query = "SELECT b FROM BetalingsMethoden b"
+                )
+        }
+)
 public class BetalingsMethoden {
+    public static final String FIND_ALL = "BetalingsMethoden.findAll";
 
     //attributen
     @Id

@@ -4,7 +4,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="boeking")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Boeking.FIND_BOEKINGEN_GEBRUIKER,
+                        query = "SELECT b FROM Boeking b WHERE (b.gebruiker) = :gebruiker"
+                )
+        }
+)
 public class Boeking {
+    public static final String FIND_BOEKINGEN_GEBRUIKER = "Boeking.findBoekingenGebruiker";
 
     @Id
     private int boekingID;
@@ -15,7 +24,8 @@ public class Boeking {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "gebruikerID")
     private Gebruiker gebruiker;
-    @OneToOne(mappedBy="boeking")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "betalingID")
     private Betaling betaling;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "reisID")
@@ -29,7 +39,7 @@ public class Boeking {
         this.boekingID = boekingID;
     }
 
-    public boolean isBetaald() {
+    public boolean getIsBetaald() {
         return isBetaald;
     }
 

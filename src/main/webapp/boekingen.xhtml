@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<ui:composition template="index.xhtml">
+    <ui:define name="content">
+        <div>
+            <div class="container">
+                <div class="span12 text-center">
+                    <div class="p-5">
+                        <h2 class="display-4">Mijn boekingen</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <div class="container">
+                <h:outputLabel value="Toegang geweigerd!"
+                               rendered="#{gebruikerController.getIngelogdeGebruiker().naam == null}"/>
+
+                <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
+                    <h:outputLabel value="U hebt geen boekingen!"
+                                   rendered="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID) == null}"/>
+
+                    <c:if test="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID) != null}">
+                        <h:dataTable
+                                value="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID)}"
+                                var="boeking" class="table">
+                            <h:column>
+                                <f:facet name="header">Reis</f:facet>
+                                #{boeking.reis.titel}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Prijs</f:facet>
+                                <h:outputText value="#{boeking.bedrag}">
+                                    <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Betaald</f:facet>
+                                #{boeking.isBetaald}
+                            </h:column>
+
+                            <h:column>
+                                <h:form>
+                                    <h:commandButton class="btn btn-primary mr-1" value="Betaal"
+                                                     action="#{betalingController.betaalPagina(boeking.boekingID)}" rendered="#{!boeking.isBetaald}"/>
+                                    <h:outputText value="#{boeking.betaling.betalingID}" rendered="#{boeking.isBetaald}"/>
+                                </h:form>
+                            </h:column>
+                        </h:dataTable>
+                    </c:if>
+                </c:if>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

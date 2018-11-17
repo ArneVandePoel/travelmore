@@ -10,9 +10,11 @@ public class Betaling {
     @Id
     private int betalingID;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "betalingMethodeID")
     private BetalingsMethoden betalingsMethode;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "boekingID")
     private Boeking boeking;
 
     //getters, setters

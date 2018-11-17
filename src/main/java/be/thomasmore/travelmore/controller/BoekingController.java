@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ManagedBean
 @SessionScoped
@@ -40,6 +41,10 @@ public class BoekingController {
         return this.reisID;
     }
 
+    public List getBoekingenGebruiker(int gebruikerID){
+        return this.boekingService.findByGebruiker(gebruikerID);
+    }
+
     public String maakBoekingVoorstel(int reisID, int aantal) {
         System.out.println("hallo?");
         Reis reis = this.reisService.findReis(reisID);
@@ -65,6 +70,6 @@ public class BoekingController {
 
         this.boekingService.insert(boeking);
 
-        return "index";
+        return "boekingen";
     }
 }

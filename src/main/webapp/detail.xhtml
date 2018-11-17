@@ -127,7 +127,11 @@
 
                                     <c:if test="#{(boekingController.getPrijs() != 0) and (boekingController.getReisID() == reis.reisID)}">
                                         <h:form>
-                                            <p>Totale prijs voor #{boekingController.getAantal()} personen: #{boekingController.getPrijs()}</p>
+                                            <p>Totale prijs voor #{boekingController.getAantal()} personen:
+                                                <h:outputText value="#{boekingController.getPrijs()}">
+                                                    <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
+                                                </h:outputText>
+                                            </p>
 
                                             <h:commandButton class="btn btn-primary mr-1" value="Boek"
                                                              action="#{boekingController.maakBoeking(reis.reisID, gebruikerController.getIngelogdeGebruiker().email)}"/>
