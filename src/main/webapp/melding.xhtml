@@ -10,10 +10,25 @@
     <title>Title</title>
 </head>
 <body>
-<ui:composition template="index.xhtml">
-    <ui:define name="content">
-        <h:outputText value="#{gebruikerController.getMelding()}" styleClass="preformatted" />
-    </ui:define>
-</ui:composition>
+    <ui:composition template="index.xhtml">
+        <ui:define name="content">
+
+            <div>
+                <div class="container">
+                    <div class="span12 text-center">
+                        <div class="p-5">
+                            <h2 class="display-4">Melding</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="container">
+                    <h:outputText value="#{gebruikerController.getMelding()}" styleClass="preformatted" />
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
 </body>
 </html>

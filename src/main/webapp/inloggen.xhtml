@@ -13,7 +13,7 @@
     <ui:composition template="index.xhtml">
         <ui:define name="content">
 
-            <div id="reizen">
+            <div>
                 <div class="container">
                     <div class="span12 text-center">
                         <div class="p-5">
@@ -36,7 +36,7 @@
                                     <label for="wachtwoord">Wachtwoord:</label>
                                     <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
                                 </div>
-                                <h:commandButton class="btn btn-primary" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
+                                <h:commandButton class="btn btn-primary mr-1" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
                                 <h:button class="btn btn-secondary" value="Annuleren" outcome="index" />
                             </h:form>
                         </div>
