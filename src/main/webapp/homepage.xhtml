@@ -50,7 +50,11 @@
                                         <td>
                                             <ul class="noIcon">
                                                 <li class="subtext">Vanaf</li>
-                                                <li class="prijstext">#{reis.prijs}€</li>
+                                                <li class="prijstext">
+                                                    <h:outputText value="#{reis.prijs}">
+                                                        <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
+                                                    </h:outputText>
+                                                </li>
                                                 <li class="subtext">Per persoon</li>
                                             </ul>
                                         </td>
