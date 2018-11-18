@@ -67,7 +67,8 @@ public class GebruikerController {
 
             if(passwordToCheck.equalsIgnoreCase(password)){
                 this.ingelogdeGebruiker = gebruiker;
-                this.melding = "U bent ingelogd als: " + ingelogdeGebruiker.getVoornaam() + " " + ingelogdeGebruiker.getNaam();
+//                this.melding = "U bent ingelogd als: " + ingelogdeGebruiker.getVoornaam() + " " + ingelogdeGebruiker.getNaam();
+                return "boekingen";
             }else{
                 this.melding = "Fout wachtwoord!";
             }
@@ -77,6 +78,12 @@ public class GebruikerController {
 
         System.out.println(this.melding);
         return "melding";
+    }
+
+    //uitloggen
+    public String loguit() {
+        this.ingelogdeGebruiker = new Gebruiker();
+        return "index";
     }
 
     //gebruiker aanmaken

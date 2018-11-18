@@ -33,17 +33,26 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
+                    <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam == null}">
+                        <!-- Voor de bezoeker -->
                         <li class="nav-item">
-                            <h:link value="Mijn Boekingen" outcome="boekingen" class="nav-link"/>
+                            <h:link value="Inloggen" outcome="inloggen" class="nav-link" />
+                        </li>
+                        <li class="nav-item">
+                            <h:link value="Registreren" outcome="registreren" class="nav-link" />
                         </li>
                     </c:if>
-                    <li class="nav-item">
-                        <h:link value="Inloggen" outcome="inloggen" class="nav-link"/>
-                    </li>
-                    <li class="nav-item">
-                        <h:link value="Registreren" outcome="registreren" class="nav-link"/>
-                    </li>
+                    <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
+                        <!-- Voor de ingelogde gebruiker -->
+                        <li class="nav-item">
+                            <h:link value="Mijn boekingen" outcome="boekingen" class="nav-link" />
+                        </li>
+                        <li class="nav-item">
+                            <h:form>
+                                <h:commandLink value="Uitloggen" action="#{gebruikerController.loguit()}" class="nav-link" />
+                            </h:form>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
         </div>

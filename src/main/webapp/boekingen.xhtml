@@ -25,11 +25,11 @@
 
         <div class="mb-5">
             <div class="container">
-                <h:outputLabel value="Toegang geweigerd!"
+                <h:outputText value="Toegang geweigerd!"
                                rendered="#{gebruikerController.getIngelogdeGebruiker().naam == null}"/>
 
                 <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
-                    <h:outputLabel value="U hebt geen boekingen!"
+                    <h:outputText value="U hebt geen boekingen!"
                                    rendered="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID) == null}"/>
 
                     <c:if test="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID) != null}">
