@@ -21,12 +21,14 @@ public class Boeking {
     private boolean isBetaald;
     @Column(name = "bedrag")
     private double bedrag;
+    @Column(name = "aantalPersonen")
+    private int aantalPersonen;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "gebruikerID")
     private Gebruiker gebruiker;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "betalingID")
-    private Betaling betaling;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "betalingsMethodeID")
+    private BetalingsMethoden betalingsMethode;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "reisID")
     private Reis reis;
@@ -55,6 +57,14 @@ public class Boeking {
         this.bedrag = bedrag;
     }
 
+    public int getAantalPersonen() {
+        return aantalPersonen;
+    }
+
+    public void setAantalPersonen(int aantalPersonen) {
+        this.aantalPersonen = aantalPersonen;
+    }
+
     public Gebruiker getGebruiker() {
         return gebruiker;
     }
@@ -63,12 +73,12 @@ public class Boeking {
         this.gebruiker = gebruiker;
     }
 
-    public Betaling getBetaling() {
-        return betaling;
+    public BetalingsMethoden getBetalingsMethode() {
+        return betalingsMethode;
     }
 
-    public void setBetaling(Betaling betaling) {
-        this.betaling = betaling;
+    public void setBetalingsMethode(BetalingsMethoden betalingsMethode) {
+        this.betalingsMethode = betalingsMethode;
     }
 
     public Reis getReis() {

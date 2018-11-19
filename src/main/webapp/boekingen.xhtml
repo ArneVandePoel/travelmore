@@ -42,6 +42,11 @@
                             </h:column>
 
                             <h:column>
+                                <f:facet name="header">Aantal personen</f:facet>
+                                #{boeking.aantalPersonen}
+                            </h:column>
+
+                            <h:column>
                                 <f:facet name="header">Prijs</f:facet>
                                 <h:outputText value="#{boeking.bedrag}">
                                     <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
@@ -57,7 +62,7 @@
                                 <h:form>
                                     <h:commandButton class="btn btn-primary mr-1" value="Betaal"
                                                      action="#{betalingController.betaalPagina(boeking.boekingID)}" rendered="#{!boeking.isBetaald}"/>
-                                    <h:outputText value="#{boeking.betaling.betalingID}" rendered="#{boeking.isBetaald}"/>
+                                    <h:outputText value="#{boeking.betalingsMethode.naam}" rendered="#{boeking.isBetaald}"/>
                                 </h:form>
                             </h:column>
                         </h:dataTable>

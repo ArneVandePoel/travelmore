@@ -1,8 +1,10 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.BetalingsMethoden;
 import be.thomasmore.travelmore.domain.Boeking;
 import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.domain.Reis;
+import be.thomasmore.travelmore.service.BetalingsMethodenService;
 import be.thomasmore.travelmore.service.BoekingService;
 import be.thomasmore.travelmore.service.GebruikerService;
 import be.thomasmore.travelmore.service.ReisService;
@@ -22,6 +24,8 @@ public class BoekingController {
     private ReisService reisService;
     @Inject
     private GebruikerService gebruikerService;
+    @Inject
+    private BetalingsMethodenService betalingsMethodenService;
 
     //variabelen
     private double prijs;
@@ -63,7 +67,10 @@ public class BoekingController {
         boeking.setReis(reis);
         Gebruiker gebruiker = this.gebruikerService.findGebruikerByEmail(gebruikerMail);
         boeking.setGebruiker(gebruiker);
+        BetalingsMethoden betalingsMethode = this.betalingsMethodenService.findBetalingsMethode(0);
+        boeking.setBetalingsMethode(betalingsMethode);
         boeking.setBedrag(this.prijs);
+        boeking.setAantalPersonen(this.aantal);
 
         System.out.print("test 1: " + reis.getReisID());
         System.out.print("test 2: " + gebruiker.getEmail());

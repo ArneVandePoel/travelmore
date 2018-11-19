@@ -1,9 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
-import be.thomasmore.travelmore.domain.Betaling;
 import be.thomasmore.travelmore.domain.BetalingsMethoden;
 import be.thomasmore.travelmore.domain.Boeking;
-import be.thomasmore.travelmore.service.BetalingService;
 import be.thomasmore.travelmore.service.BetalingsMethodenService;
 import be.thomasmore.travelmore.service.BoekingService;
 
@@ -19,8 +17,6 @@ public class BetalingController {
     private BoekingService boekingService;
     @Inject
     private BetalingsMethodenService betalingsMethodenService;
-    @Inject
-    private BetalingService betalingService;
 
     private Boeking boeking = new Boeking();
     private List<BetalingsMethoden> betalingsMethoden;
@@ -42,15 +38,10 @@ public class BetalingController {
     }
 
     public String betaalBoeking(int betalingsMethodeID){
-        Betaling betaling = new Betaling();
         BetalingsMethoden betalingsMethode = betalingsMethodenService.findBetalingsMethode(betalingsMethodeID);
 
-        betaling.setBoeking(this.boeking);
-        betaling.setBetalingsMethode(betalingsMethode);
-        betalingService.insert(betaling);
-
         this.boeking.setBetaald(true);
-        this.boeking.setBetaling(betaling);
+        this.boeking.setBetalingsMethode(betalingsMethode);
         boekingService.update(this.boeking);
 
         return "boekingen";
