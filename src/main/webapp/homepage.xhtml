@@ -60,6 +60,11 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><div style="float: left;">
+                                            <h:form>
+                                                <h:commandLink value = "Details" action="#{reisController.ReisDetails(reis)}" styleClass="btn btn-primary btn-l rounded-pill mt-2" />
+                                            </h:form>
+                                        </div></td>
                                         <td>#{reis.hotel.aantalSterren} sterren</td>
                                         <td>
                                             <ul class="noIcon">

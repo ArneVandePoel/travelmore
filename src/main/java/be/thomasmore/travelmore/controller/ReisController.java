@@ -14,6 +14,7 @@ import java.util.List;
 public class ReisController {
     @Inject
     private ReisService reisService;
+    private Reis reisobject = new Reis();
 
     //reis voor op detailpagina
     private Reis reis;
@@ -37,5 +38,22 @@ public class ReisController {
         this.reis = this.reisService.findReis(id);
 
         return "detail?faces-redirect=true";
+    }
+
+
+    public void setReis(Reis reis){
+        this.reisobject = reis;
+    }
+
+    public Reis getCurrentReis(){
+        return reisobject;
+    }
+
+    public String ReisDetails(Reis reis){
+        //reis opvullen...
+        setReis(reis);
+
+        //ga naar detail pagina
+        return "detail";
     }
 }

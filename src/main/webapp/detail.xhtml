@@ -5,145 +5,92 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 <head>
     <title>Title</title>
 </head>
 <body>
-    <ui:composition template="index.xhtml">
-        <ui:define name="content">
-
-            <div>
-                <ui:param name="reis" value="#{reisController.getReis()}"/>
-                <div class="container">
-                    <div class="span12 text-center">
-                        <div class="p-5">
-                            <h2 class="display-4">#{reis.titel}</h2>
-                        </div>
+<ui:composition template="index.xhtml">
+    <ui:define name="content">
+        <!-- Titel sectie 1 -->
+        <div id="reizen">
+            <div class="container">
+                <div class="span12 text-center">
+                    <div class="p-5">
+                        <h2 class="display-4">#{reisController.currentReis.titel}</h2>
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+            <div class="container">
+                <table>
+                    <tr>
+                        <td>Vertrek-Aankomst heen:</td>
+                        <td><h:outputText value="#{reisController.currentReis.tijdstipVertrekHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reisController.currentReis.tijdstipAankomstHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
+                    </tr>
+                    <tr>
+                        <td>Vertrek-Aankomst terug:</td>
+                        <td><h:outputText value="#{reisController.currentReis.tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText value="#{reisController.currentReis.tijdstipAankomstTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/> </h:outputText></td>
+                    </tr>
+                    <tr>
+                        <td>Beschrijving:</td>
+                        <td>#{reisController.currentReis.beschrijving}</td>
+                    </tr>
+                    <tr>
+                        <td>Reis leider:</td>
+                        <td>#{reisController.currentReis.reisLeiderNaam}</td>
+                    </tr>
+                    <tr>
+                        <td>Chauffeur:</td>
+                        <td>#{reisController.currentReis.chauffeurNaam}</td>
+                    </tr>
+                    <tr>
+                        <td>Vertrek locatie:</td>
+                        <td>#{reisController.currentReis.vertrekLocatie.adres}, #{reisController.currentReis.vertrekLocatie.gemeente}</td>
+                    </tr>
+                    <tr>
+                        <td>Hotel:</td>
+                        <td>#{reisController.currentReis.hotel.naam}</td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">Extras:</td>
+                        <td><ul>
+                            <ui:repeat value="#{reisController.getExtras(reisController.currentReis.reisID)}" var="extra">
 
-            <div class="mb-5">
-                <div class="container">
-                    <table class="table">
-                        <tr>
-                            <td>Vertrek - Aankomst heen:</td>
-                            <td><h:outputText value="#{reis.tijdstipVertrekHeen}"><f:convertDateTime
-                                    pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText
-                                    value="#{reis.tijdstipAankomstHeen}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/>
-                            </h:outputText></td>
-                        </tr>
-                        <tr>
-                            <td>Vertrek - Aankomst terug:</td>
-                            <td><h:outputText value="#{reis.tijdstipVertrekTerug}"><f:convertDateTime
-                                    pattern="dd-MM-yyyy HH:mm"/> </h:outputText> - <h:outputText
-                                    value="#{reis.tijdstipAankomstTerug}"><f:convertDateTime pattern="dd-MM-yyyy HH:mm"/>
-                            </h:outputText></td>
-                        </tr>
-                        <c:if test="#{reis.beschrijving != null}">
-                            <tr>
-                                <td>Beschrijving:</td>
-                                <td>#{reis.beschrijving}</td>
-                            </tr>
-                        </c:if>
-                        <tr>
-                            <td>Reis leider:</td>
-                            <td>#{reis.reisLeiderNaam}</td>
-                        </tr>
-                        <tr>
-                            <td>Chauffeur:</td>
-                            <td>#{reis.chauffeurNaam}</td>
-                        </tr>
-                        <tr>
-                            <td>Vertrek locatie:</td>
-                            <td>#{reis.vertrekLocatie.adres}, #{reis.vertrekLocatie.gemeente}</td>
-                        </tr>
-                        <tr>
-                            <td>Hotel:</td>
-                            <td>#{reis.hotel.naam}</td>
-                        </tr>
-                        <tr>
-                            <td style="vertical-align: top">Extras:</td>
-                            <td>
-                                <ul>
-                                    <ui:repeat value="#{reisController.getExtras(reisController.getReis().reisID)}"
-                                               var="extra">
+                                <li>#{extra}</li>
 
-                                        <li>#{extra}</li>
-
-                                    </ui:repeat>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Land:</td>
-                            <td>#{reis.hotel.land}</td>
-                        </tr>
-                        <tr>
-                            <td>Adres:</td>
-                            <td>#{reis.hotel.adres}, #{reis.hotel.postcode} #{reis.hotel.gemeente}</td>
-                        </tr>
-                        <tr>
-                            <td>Telefoonnummer:</td>
-                            <td>#{reis.hotel.telefoonNummer}</td>
-                        </tr>
-                        <tr>
-                            <td>Aantal Sterren:</td>
-                            <td>#{reis.hotel.aantalSterren} sterren</td>
-                        </tr>
-                        <tr>
-                            <td>Bus:</td>
-                            <td>#{reis.bus.busType.type}</td>
-                        </tr>
-                        <tr>
-                            <td>Prijs:</td>
-                            <td>€ <h:outputText value='#{reis.prijs}'><f:convertNumber type="number" groupingUsed="true"
-                                                                                       minFractionDigits="2"
-                                                                                       pattern="#0.00"/></h:outputText></td>
-                        </tr>
-                    </table>
-
-                    <div class="row align-items-center">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h:outputText value="Gelieve in te loggen om te kunnen boeken!"
-                                               rendered="#{gebruikerController.getIngelogdeGebruiker().naam == null}"/>
-
-                                <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
-                                    <h3>Boeken voor #{gebruikerController.getIngelogdeGebruiker().voornaam} #{gebruikerController.getIngelogdeGebruiker().naam}</h3>
-
-                                    <h:form>
-                                        <div class="form-group">
-                                            <label for="aantal">Aantal:</label>
-                                            <h:inputText t:type="number" class="form-control" binding="#{aantal}"
-                                                         id="aantal" required="true"/>
-                                        </div>
-
-                                        <h:commandButton class="btn btn-primary mr-1" value="Bereken prijs"
-                                                         action="#{boekingController.maakBoekingVoorstel(reis.reisID, aantal.value)}"/>
-                                    </h:form>
-
-                                    <c:if test="#{(boekingController.getPrijs() != 0) and (boekingController.getReisID() == reis.reisID)}">
-                                        <h:form>
-                                            <p>Totale prijs voor #{boekingController.getAantal()} personen:
-                                                <h:outputText value="#{boekingController.getPrijs()}">
-                                                    <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
-                                                </h:outputText>
-                                            </p>
-
-                                            <h:commandButton class="btn btn-primary mr-1" value="Boek"
-                                                             action="#{boekingController.maakBoeking(reis.reisID, gebruikerController.getIngelogdeGebruiker().email)}"/>
-                                        </h:form>
-                                    </c:if>
-                                </c:if>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </ui:repeat>
+                        </ul></td>
+                    </tr>
+                    <tr>
+                        <td>Land:</td>
+                        <td>#{reisController.currentReis.hotel.land}</td>
+                    </tr>
+                    <tr>
+                        <td>Adres:</td>
+                        <td>#{reisController.currentReis.hotel.adres}, #{reisController.currentReis.hotel.postcode} #{reisController.currentReis.hotel.gemeente}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefoonnummer:</td>
+                        <td>#{reisController.currentReis.hotel.telefoonNummer}</td>
+                    </tr>
+                    <tr>
+                        <td>Aantal Sterren:</td>
+                        <td>#{reisController.currentReis.hotel.aantalSterren} sterren</td>
+                    </tr>
+                    <tr>
+                        <td>Bus:</td>
+                        <td>#{reisController.currentReis.bus.busType.type}</td>
+                    </tr>
+                    <tr>
+                        <td>Prijs:</td>
+                        <td>€ <h:outputText value= '#{reisController.currentReis.prijs}'><f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/></h:outputText></td>
+                    </tr>
+                </table>
             </div>
-        </ui:define>
-    </ui:composition>
+        </div>
+    </ui:define>
+</ui:composition>
 </body>
 </html>
