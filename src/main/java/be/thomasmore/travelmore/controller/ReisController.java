@@ -34,13 +34,6 @@ public class ReisController {
         return extras;
     }
 
-    public String getReisDetail(int id){
-        this.reis = this.reisService.findReis(id);
-
-        return "detail?faces-redirect=true";
-    }
-
-
     public void setReis(Reis reis){
         this.reisobject = reis;
     }
