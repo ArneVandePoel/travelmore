@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">>
 <head>
-    <title>Title</title>
+    <title>Welkom bij Busreizen Travelmore!</title>
 </head>
 <body>
     <ui:composition>
@@ -58,6 +58,11 @@
                                                 <li class="subtext">Per persoon</li>
                                             </ul>
                                         </td>
+                                        <h:form>
+                                            <td><div style="float: left;">
+                                                <h:commandLink value = "Boek nu" class="btn btn-primary btn-l rounded-pill mt-2" />
+                                            </div></td>
+                                        </h:form>
                                     </tr>
                                     <tr>
                                         <td>#{reis.hotel.aantalSterren} sterren</td>
@@ -70,7 +75,7 @@
                                         </td>
                                         <h:form>
                                         <td><div style="float: left;">
-                                            <h:commandLink value = "Boek nu!" action = "#{reisController.ReisDetails(reis)}" class="btn btn-primary btn-l rounded-pill mt-2" />
+                                            <h:commandLink value = "Meer details" action = "#{reisController.ReisDetails(reis)}" class="btn btn-primary btn-l rounded-pill mt-2" />
                                         </div></td>
                                         </h:form>
                                     </tr>
