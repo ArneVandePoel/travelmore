@@ -36,6 +36,7 @@ public class ReisController {
 
     public void setReis(Reis reis){
         this.reisobject = reis;
+        this.reis = reis;
     }
 
     public Reis getCurrentReis(){

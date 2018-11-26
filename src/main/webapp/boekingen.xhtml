@@ -59,6 +59,7 @@
                             </h:column>
 
                             <h:column>
+                                <f:facet name="header">Betaalmethode</f:facet>
                                 <h:form>
                                     <h:commandButton class="btn btn-primary mr-1" value="Betaal"
                                                      action="#{betalingController.betaalPagina(boeking.boekingID)}" rendered="#{!boeking.isBetaald}"/>

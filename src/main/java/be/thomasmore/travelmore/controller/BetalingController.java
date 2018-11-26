@@ -44,6 +44,6 @@ public class BetalingController {
         this.boeking.setBetalingsMethode(betalingsMethode);
         boekingService.update(this.boeking);
 
-        return "boekingen";
+        return "boekingen?faces-redirect=true";
     }
 }

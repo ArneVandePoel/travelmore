@@ -60,7 +60,7 @@
                                         </td>
                                         <h:form>
                                             <td><div style="float: left;">
-                                                <h:commandLink value = "Boek nu" class="btn btn-primary btn-l rounded-pill mt-2" />
+                                                <h:commandLink value = "Boek nu" action = "#{reisController.ReisDetails(reis)}" class="btn btn-primary btn-l rounded-pill mt-2" />
                                             </div></td>
                                         </h:form>
                                     </tr>
@@ -75,7 +75,7 @@
                                         </td>
                                         <h:form>
                                         <td><div style="float: left;">
-                                            <h:commandLink value = "Meer details" action = "#{reisController.ReisDetails(reis)}" class="btn btn-primary btn-l rounded-pill mt-2" />
+                                            <h:commandLink value = "Meer details" class="btn btn-primary btn-l rounded-pill mt-2" />
                                         </div></td>
                                         </h:form>
                                     </tr>
