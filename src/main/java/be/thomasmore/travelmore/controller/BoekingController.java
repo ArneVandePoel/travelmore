@@ -4,15 +4,13 @@ import be.thomasmore.travelmore.domain.BetalingsMethoden;
 import be.thomasmore.travelmore.domain.Boeking;
 import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.domain.Reis;
-import be.thomasmore.travelmore.service.BetalingsMethodenService;
-import be.thomasmore.travelmore.service.BoekingService;
-import be.thomasmore.travelmore.service.GebruikerService;
-import be.thomasmore.travelmore.service.ReisService;
+import be.thomasmore.travelmore.service.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.mail.MessagingException;
 import java.util.List;
 
 @ManagedBean
@@ -72,11 +70,27 @@ public class BoekingController {
         boeking.setBedrag(this.prijs);
         boeking.setAantalPersonen(this.aantal);
 
-        System.out.print("test 1: " + reis.getReisID());
-        System.out.print("test 2: " + gebruiker.getEmail());
+        String email = gebruiker.getEmail();
+        String subject = "Bevestiging boeking " + reis.getTitel();
+        String message = "Beste " + gebruiker.getVoornaam() + " " + gebruiker.getNaam() + "<br>Uw boeking voor de reis "
+                + reis.getTitel() + " voor " + this.aantal +" personen is bevestigd. Veel plezier in " + reis.getHotel().getLand() + "! " +
+                "<br>Met vriendelijke groeten,<br>Het TravelMore team";
+        sendMail(email, subject, message);
 
         this.boekingService.insert(boeking);
 
         return "boekingen";
     }
+
+    private void sendMail(String email, String subject, String message){
+        statusMessage = "Message Sent";
+        try {
+            MailService.sendMail(email, subject, message);
+        }
+        catch(MessagingException ex) {
+            statusMessage = ex.getMessage();
+        }
+    }
+
+    private String statusMessage = "";
 }
