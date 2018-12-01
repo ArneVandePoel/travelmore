@@ -39,7 +39,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <ul class="extras">
+                                            <ul class="extras" style="padding-left: 1rem;">
                                                 <ui:repeat value="#{reisController.getExtras(reis.reisID)}" var="extra">
 
                                                     <li>#{extra}</li>
@@ -73,11 +73,7 @@
                                                 <li>Terug: <h:outputText value="#{reis.tijdstipVertrekTerug}"><f:convertDateTime pattern="dd-MM-yyyy"/> </h:outputText></li>
                                             </ul>
                                         </td>
-                                        <h:form>
-                                        <td><div style="float: left;">
-                                            <h:commandLink value = "Meer details" class="btn btn-primary btn-l rounded-pill mt-2" />
-                                        </div></td>
-                                        </h:form>
+                                        <td></td>
                                     </tr>
                                 </table>
                             </div>
