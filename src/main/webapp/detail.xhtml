@@ -164,7 +164,9 @@
                                 <div class="form-group">
                                     <label for="aantal">Aantal personen:</label>
                                     <h:inputText t:type="number" class="form-control" binding="#{aantal}"
-                                                 id="aantal" required="true" />
+                                                 id="aantal" required="true">
+                                        <f:validateLongRange minimum="1" />
+                                    </h:inputText>
                                 </div>
                                 <h:commandButton class="btn btn-primary" value="Bereken prijs"
                                                  action="#{boekingController.maakBoekingVoorstel(reis.reisID, aantal.value)}"/>
