@@ -72,9 +72,11 @@ public class BoekingController {
 
         String email = gebruiker.getEmail();
         String subject = "Bevestiging boeking " + reis.getTitel();
-        String message = "Beste " + gebruiker.getVoornaam() + " " + gebruiker.getNaam() + "<br>Uw boeking voor de reis "
-                + reis.getTitel() + " voor " + this.aantal +" personen is bevestigd. Veel plezier in " + reis.getHotel().getLand() + "! " +
-                "<br>Met vriendelijke groeten,<br>Het TravelMore team";
+        String message = "Beste " + gebruiker.getVoornaam() + " " + gebruiker.getNaam() + ",<br><br>" +
+            "Uw boeking voor de reis " + reis.getTitel() + " voor " + this.aantal +" personen is bevestigd.<br><br>" +
+            "Veel plezier in " + reis.getHotel().getLand() + "!<br><br>" +
+            "Met vriendelijke groeten,<br><br>" +
+            "Het TravelMore team";
         sendMail(email, subject, message);
 
         this.boekingService.insert(boeking);
