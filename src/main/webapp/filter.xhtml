@@ -9,55 +9,91 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <head>
     <title>Title</title>
-    <style type="text/css">
-        .ui-datatable .ui-datatable-header {
-            text-align: right !important;
-        }
-
-        .ui-button-text-only .ui-button-text {
-            padding: 0.3em 0.4em;
-        }
-
-        .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
-            visibility: hidden;
-        }
-
-        .ui-filter-column .ui-column-customfilter .custom-filter {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .year-spinner input {
-            width: 100%;
-            box-sizing: border-box;
-        }
-    </style>
-
 </head>
 <body>
-<ui:composition>
-<h:form>
-    <p:dataTable var="reis" value="#{reisController.getReizen()}" widgetVar="reizenTable"
-                 emptyMessage="Geen reis gevonden met deze criteria" filteredValue="#{dtFilterView.filteredReizen}">
+<ui:composition template="index.xhtml">
+    <ui:define name="content">
 
-        <f:facet name="header">
-            <p:outputPanel>
-                <h:outputText value="Search all fields:" />
-                <p:inputText id="globalFilter" onkeyup="PF('reizenTable').filter()" style="width:150px" placeholder="Enter keyword"/>
-            </p:outputPanel>
-        </f:facet>
+        <div>
+            <div class="container">
+                <div class="span12 text-center">
+                    <div class="p-5">
+                        <h2 class="display-4">Zoek een reis</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <p:column filterBy="#{reis.titel}" headerText="Titel" footerText="contains" filterMatchMode="contains">
-            <h:outputText value="#{reis.titel}" />
-        </p:column>
+        <div class="mb-5">
+            <div class="container">
+                <div class="row">
+                    <h:form>
+                        <p:dataTable value="#{reisController.getReizenLijst()}" var="reis">
+                            <p:column id="hotelHeader" filterBy="#{reis.hotel.naam}" filterMatchMode="contains">
+                                <f:facet name="header">
+                                    <h:outputText value="Hotel" />
+                                </f:facet>
+                                <h:outputText value="#{reis.hotel.naam}" />
+                            </p:column>
 
-        <p:column filterBy="#{reis.prijs}" headerText="Maximumprijs" footerText="custom (max)" filterFunction="#{dtFilterView.filterByPrice}">
-            <h:outputText value="#{reis.prijs}">
-                <f:convertNumber currencySymbol="€" type="currency"/>
-            </h:outputText>
-        </p:column>
-    </p:dataTable>
-</h:form>
+                            <p:column id="titelHeader" filterBy="#{reis.titel}">
+                                <f:facet name="header">
+                                    <h:outputText value="Titel" />
+                                </f:facet>
+                                <h:outputText value="#{reis.titel}" />
+                            </p:column>
+
+                            <p:column id="plaatsHeader" sortBy="#{reis.bus.busType.aantalPlaatsen}">
+                                <f:facet name="header">
+                                    <h:outputText value="Aantal plaatsen" />
+                                </f:facet>
+                                <h:outputText value="#{reis.bus.busType.aantalPlaatsen}" />
+                            </p:column>
+
+                            <p:column id="landHeader" filterBy="#{reis.hotel.land}">
+                                <f:facet name="header">
+                                    <h:outputText value="Land" />
+                                </f:facet>
+                                <h:outputText value="#{reis.hotel.land}" />
+                            </p:column>
+
+                            <p:column id="vertrekheenHeader" sortBy="#{reis.tijdstipVertrekHeen}">
+                                <f:facet name="header">
+                                    <h:outputText value="Vertrek heen" />
+                                </f:facet>
+                                <h:outputText value="#{reis.tijdstipVertrekHeen}">
+                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column id="aankomstterugHeader" sortBy="#{reis.tijdstipAankomstTerug}">
+                                <f:facet name="header">
+                                    <h:outputText value="Aankomst terug" />
+                                </f:facet>
+                                <h:outputText value="#{reis.tijdstipAankomstTerug}">
+                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column id="prijsHeader" sortBy="#{reis.prijs}">
+                                <f:facet name="header">
+                                    <h:outputText value="Prijs" />
+                                </f:facet>
+                                <h:outputText value="€ #{reis.prijs}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Boek" />
+                                </f:facet>
+                                <h:commandLink value = "Boek nu" action = "#{reisController.ReisDetails(reis)}" class="btn btn-primary btn-l rounded-pill mt-2 text-white" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
 </ui:composition>
 </body>
 </html>

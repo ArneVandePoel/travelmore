@@ -36,6 +36,12 @@
                     <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam == null}">
                         <!-- Voor de bezoeker -->
                         <li class="nav-item">
+                            <h:link value="Home" outcome="index" class="nav-link" />
+                        </li>
+                        <li class="nav-item">
+                            <h:link value="Zoek Reis" outcome="filter" class="nav-link" />
+                        </li>
+                        <li class="nav-item">
                             <h:link value="Inloggen" outcome="inloggen" class="nav-link" />
                         </li>
                         <li class="nav-item">
@@ -44,6 +50,12 @@
                     </c:if>
                     <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
                         <!-- Voor de ingelogde gebruiker -->
+                        <li class="nav-item">
+                            <h:link value="Home" outcome="index" class="nav-link" />
+                        </li>
+                        <li class="nav-item">
+                            <h:link value="Zoek Reis" outcome="filter" class="nav-link" />
+                        </li>
                         <li class="nav-item">
                             <h:link value="Mijn boekingen" outcome="boekingen" class="nav-link" />
                         </li>
