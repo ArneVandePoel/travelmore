@@ -23,6 +23,8 @@ public class BoekingRepository {
         return q.getResultList();
     }
 
+    public List<Boeking> getAll(){ return entityManager.createNamedQuery(Boeking.FIND_ALL, Boeking.class).getResultList(); }
+
     public void update(Boeking boeking) { entityManager.merge(boeking);}
 
     public void insert(Boeking boeking) { entityManager.persist(boeking);}

@@ -8,7 +8,6 @@ import be.thomasmore.travelmore.service.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import java.util.List;
@@ -28,7 +27,9 @@ public class BoekingController {
     //variabelen
     private double prijs;
     private int aantal;
+    private int maxAantal;
     private int reisID;
+    private String message;
 
     //getters
     public double getPrijs() {
@@ -43,6 +44,8 @@ public class BoekingController {
         return this.reisID;
     }
 
+    public String getMessage() { return this.message; }
+
     public List getBoekingenGebruiker(int gebruikerID){
         return this.boekingService.findByGebruiker(gebruikerID);
     }
@@ -51,11 +54,39 @@ public class BoekingController {
         System.out.println("hallo?");
         Reis reis = this.reisService.findReis(reisID);
 
-        this.prijs = aantal * reis.getPrijs();
-        this.aantal = aantal;
-        this.reisID = reisID;
+        //checken of er nog plaats is
+        int maxAantal = getMaxAantalVoorReis(reis);
+        int reisAantal = getAantalVoorReis(reis);
 
-        return "detail?faces-redirect=true";
+        if((reisAantal + aantal) > maxAantal){
+            this.message = "Sorry, er zijn niet genoeg plaatsen meer vrij op deze reis. Aantal vrije plaatsen: " + (maxAantal - reisAantal);
+
+            return "detail";
+        }else{
+            this.message = null;
+            this.prijs = aantal * reis.getPrijs();
+            this.aantal = aantal;
+            this.reisID = reisID;
+
+            return "detail?faces-redirect=true";
+        }
+    }
+
+    public int getAantalVoorReis(Reis reis){
+        int aantal = 0;
+        List<Boeking> boekingen = boekingService.getAll();
+
+        for(Boeking boeking : boekingen){
+            if(boeking.getReis().getReisID() == reis.getReisID()){
+                aantal++;
+            }
+        }
+
+        return aantal;
+    }
+
+    public int getMaxAantalVoorReis(Reis reis){
+        return reis.getBus().getBusType().getAantalPlaatsen();
     }
 
     public String maakBoeking(int reisID, String gebruikerMail) {

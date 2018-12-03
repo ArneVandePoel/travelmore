@@ -14,6 +14,8 @@ public class BoekingService {
 
     public List<Boeking> findByGebruiker(int gebruikerID) {return boekingRepository.findByGebruiker(gebruikerID);}
 
+    public List<Boeking> getAll() { return boekingRepository.getAll();}
+
     public Boeking findBoeking(int id){return boekingRepository.findById(id);}
 
     public void update(Boeking boeking){boekingRepository.update(boeking);}

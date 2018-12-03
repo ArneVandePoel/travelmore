@@ -57,7 +57,8 @@
                         <th>Adres</th>
                         <td>
                             #{reisController.currentReis.hotel.adres}<br/>
-                            #{reisController.currentReis.hotel.postcode} #{reisController.currentReis.hotel.gemeente}<br/>
+                            #{reisController.currentReis.hotel.postcode} #{reisController.currentReis.hotel.gemeente}
+                            <br/>
                             #{reisController.currentReis.hotel.land}
                         </td>
                     </tr>
@@ -74,7 +75,8 @@
                         <th style="width: 30%">Vertreklocatie</th>
                         <td>
                             #{reisController.currentReis.vertrekLocatie.adres}<br/>
-                            #{reisController.currentReis.vertrekLocatie.postcode} #{reisController.currentReis.vertrekLocatie.gemeente}<br/>
+                            #{reisController.currentReis.vertrekLocatie.postcode} #{reisController.currentReis.vertrekLocatie.gemeente}
+                            <br/>
                             #{reisController.currentReis.vertrekLocatie.land}
                         </td>
                     </tr>
@@ -144,8 +146,15 @@
                         <th>Prijs</th>
                         <td>€
                             <h:outputText value='#{reisController.currentReis.prijs}'>
-                                <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                                <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2"
+                                                 pattern="#0.00"/>
                             </h:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Plaatsen</th>
+                        <td><h:outputText value="#{boekingController.getAantalVoorReis(reis)}"/>/
+                            <h:outputText value="#{boekingController.getMaxAantalVoorReis(reis)}"/>
                         </td>
                     </tr>
                 </table>
@@ -153,7 +162,7 @@
                 <h3 class="my-5">Boek nu</h3>
 
                 <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam == null}">
-                    Gelieve <h:link value="in te loggen" outcome="inloggen" /> om te kunnen boeken.
+                    Gelieve <h:link value="in te loggen" outcome="inloggen"/> om te kunnen boeken.
                 </c:if>
 
                 <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
@@ -165,12 +174,18 @@
                                     <label for="aantal">Aantal personen:</label>
                                     <h:inputText t:type="number" class="form-control" binding="#{aantal}"
                                                  id="aantal" required="true">
-                                        <f:validateLongRange minimum="1" />
+                                        <f:validateLongRange minimum="1"/>
                                     </h:inputText>
                                 </div>
                                 <h:commandButton class="btn btn-primary" value="Bereken prijs"
                                                  action="#{boekingController.maakBoekingVoorstel(reis.reisID, aantal.value)}"/>
                             </h:form>
+
+                            <c:if test="#{boekingController.getMessage() != null}">
+                                <p class="mt-3">
+                                    <h:outputText value="#{boekingController.getMessage()}"/>
+                                </p>
+                            </c:if>
 
                             <c:if test="#{(boekingController.getPrijs() != 0) and (boekingController.getReisID() == reis.reisID)}">
                                 <h:form>
