@@ -71,7 +71,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="land">Land:</label>
-                                    <h:inputText class="form-control" binding="#{land}" id="land" required="true" requiredMessage="Land is vereist."/>
+                                    <h:selectOneMenu class="form-control" binding="#{land}" id="land" required="true" requiredMessage="Land is vereist.">
+                                        <f:selectItem itemValue="België" itemLabel="België"/>
+                                        <f:selectItem itemValue="Nederland" itemLabel="Nederland"/>
+                                    </h:selectOneMenu>
                                     <small><h:message for="land" styleClass="text-danger" /></small>
                                 </div>
                                 <div class="form-group">
