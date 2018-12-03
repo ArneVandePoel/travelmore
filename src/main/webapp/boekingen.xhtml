@@ -37,31 +37,45 @@
                                 value="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID)}"
                                 var="boeking" class="table">
                             <h:column>
+                                <f:facet name="header">Vertrek</f:facet>
+                                <span class="align-middle">
+                                    <h:outputText value="#{boeking.reis.tijdstipVertrekHeen}">
+                                        <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                    </h:outputText>
+                                </span>
+                            </h:column>
+
+                            <h:column>
                                 <f:facet name="header">Reis</f:facet>
-                                #{boeking.reis.titel}
+                                <span class="align-middle">#{boeking.reis.titel}</span>
                             </h:column>
 
                             <h:column>
                                 <f:facet name="header">Aantal personen</f:facet>
-                                #{boeking.aantalPersonen}
+                                <span class="align-middle">#{boeking.aantalPersonen}</span>
                             </h:column>
 
                             <h:column>
                                 <f:facet name="header">Prijs</f:facet>
-                                <h:outputText value="#{boeking.bedrag}">
-                                    <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
-                                </h:outputText>
+                                <span class="align-middle">
+                                    <h:outputText value="#{boeking.bedrag}">
+                                        <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
+                                    </h:outputText>
+                                </span>
                             </h:column>
 
                             <h:column>
                                 <f:facet name="header">Betaald</f:facet>
-                                #{boeking.isBetaald}
+                                <span class="align-middle">
+                                    <h:outputText value="Ja" rendered="#{boeking.isBetaald}" />
+                                    <h:outputText value="Neen" rendered="#{!boeking.isBetaald}" />
+                                </span>
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header">Betaalmethode</f:facet>
+                                <f:facet name="header">Betalingsmethode</f:facet>
                                 <h:form>
-                                    <h:commandButton class="btn btn-primary mr-1" value="Betaal"
+                                    <h:commandButton class="btn btn-primary mr-1" value="Betalen"
                                                      action="#{betalingController.betaalPagina(boeking.boekingID)}" rendered="#{!boeking.isBetaald}"/>
                                     <h:outputText value="#{boeking.betalingsMethode.naam}" rendered="#{boeking.isBetaald}"/>
                                 </h:form>
