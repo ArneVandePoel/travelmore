@@ -8,7 +8,7 @@ import javax.persistence.*;
         {
                 @NamedQuery(
                         name = Boeking.FIND_BOEKINGEN_GEBRUIKER,
-                        query = "SELECT b FROM Boeking b WHERE (b.gebruiker) = :gebruiker"
+                        query = "SELECT b FROM Boeking b WHERE (b.gebruiker) = :gebruiker ORDER BY b.isBetaald"
                 ),
                 @NamedQuery(
                         name = Boeking.FIND_ALL,

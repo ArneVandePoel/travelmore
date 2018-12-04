@@ -78,7 +78,7 @@ public class BoekingController {
 
         for(Boeking boeking : boekingen){
             if(boeking.getReis().getReisID() == reis.getReisID()){
-                aantal++;
+                aantal += boeking.getAantalPersonen();
             }
         }
 
