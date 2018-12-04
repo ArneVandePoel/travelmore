@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="row">
                     <h:form>
-                        <p:dataTable value="#{reisController.getReizenLijst()}" var="reis">
+                        <p:dataTable value="#{reisController.getReizenLijst()}" var="reis" filteredValue="#{reisController.filteredReizen}">
                             <p:column id="hotelHeader" filterBy="#{reis.hotel.naam}" filterMatchMode="contains">
                                 <f:facet name="header">
                                     <h:outputText value="Hotel" />
@@ -36,7 +36,7 @@
                                 <h:outputText value="#{reis.hotel.naam}" />
                             </p:column>
 
-                            <p:column id="titelHeader" filterBy="#{reis.titel}">
+                            <p:column id="titelHeader" filterBy="#{reis.titel}" filterMatchMode="contains">
                                 <f:facet name="header">
                                     <h:outputText value="Titel" />
                                 </f:facet>
@@ -50,7 +50,7 @@
                                 <h:outputText value="#{reis.bus.busType.aantalPlaatsen}" />
                             </p:column>
 
-                            <p:column id="landHeader" filterBy="#{reis.hotel.land}">
+                            <p:column id="landHeader" filterBy="#{reis.hotel.land}" filterMatchMode="contains">
                                 <f:facet name="header">
                                     <h:outputText value="Land" />
                                 </f:facet>

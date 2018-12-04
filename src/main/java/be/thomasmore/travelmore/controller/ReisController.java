@@ -17,6 +17,7 @@ public class ReisController {
     private ReisService reisService;
     private Reis reisobject = new Reis();
     private List<Reis> reisList;
+    private List<Reis> filteredReizen;
 
     //reis voor op detailpagina
     private Reis reis;
@@ -36,17 +37,12 @@ public class ReisController {
         return reisList;
     }
 
-    public boolean filterByPrice(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if(filterText == null||filterText.equals("")) {
-            return true;
-        }
+    public List<Reis> getFilteredReizen(){
+        return filteredReizen;
+    }
 
-        if(value == null) {
-            return false;
-        }
-
-        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+    public void setFilteredReizen(List<Reis> filteredReizen) {
+        this.filteredReizen = filteredReizen;
     }
 
 

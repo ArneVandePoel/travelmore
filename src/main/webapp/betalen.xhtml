@@ -30,23 +30,30 @@
 
                 <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
                     <ui:param name="boeking" value="#{betalingController.getBoeking()}"/>
-                    <h3>Boeken reis #{boeking.reis.titel}</h3>
+                    <h3>#{boeking.reis.titel}</h3>
 
-                    <h:outputText value="#{boeking.bedrag}">
-                        <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
-                    </h:outputText>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>Totaalbedrag:
+                                <h:outputText value="#{boeking.bedrag}">
+                                    <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
+                                </h:outputText>
+                            </p>
 
-                    <h:form>
-                        <div class="form-group">
-                            <label for="betalingsMethode">Betalings methode:</label>
-                            <h:selectOneMenu id="betalingsMethode" required="true" binding="#{betalingsMethode}" class="form-control">
-                                <f:selectItems value="#{betalingController.getBetalingsMethoden()}" var="b" itemLabel="#{b.naam}" itemValue="#{b.betalingsMethodeID}"/>
-                            </h:selectOneMenu>
+                            <h:form>
+                                <div class="form-group">
+                                    <label for="betalingsMethode">Betalingsmethode:</label>
+                                    <h:selectOneMenu id="betalingsMethode" required="true" binding="#{betalingsMethode}" class="form-control">
+                                        <f:selectItems value="#{betalingController.getBetalingsMethoden()}" var="b" itemLabel="#{b.naam}" itemValue="#{b.betalingsMethodeID}"/>
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <h:commandButton class="btn btn-primary mr-1" value="Betalen"
+                                                 action="#{betalingController.betaalBoeking(betalingsMethode.value)}"/>
+                                <h:button class="btn btn-light" value="Annuleren" outcome="boekingen" />
+                            </h:form>
                         </div>
-
-                        <h:commandButton class="btn btn-primary mr-1" value="Betaal"
-                                         action="#{betalingController.betaalBoeking(betalingsMethode.value)}"/>
-                    </h:form>
+                    </div>
                 </c:if>
             </div>
         </div>
