@@ -152,9 +152,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Plaatsen</th>
-                        <td><h:outputText value="#{boekingController.getAantalVoorReis(reis)}"/>/
-                            <h:outputText value="#{boekingController.getMaxAantalVoorReis(reis)}"/>
+                        <th>Vrije plaatsen</th>
+                        <td><h:outputText value="#{boekingController.getMaxAantalVoorReis(reis) - boekingController.getAantalVoorReis(reis)}"/>
                         </td>
                     </tr>
                 </table>
