@@ -59,7 +59,7 @@ public class BoekingController {
         int reisAantal = getAantalVoorReis(reis);
 
         if((reisAantal + aantal) > maxAantal){
-            this.message = "Sorry, er zijn niet genoeg plaatsen meer vrij op deze reis. Aantal vrije plaatsen: " + (maxAantal - reisAantal);
+            this.message = "Er zijn niet genoeg vrije plaatsen voor deze reis. Aantal vrije plaatsen: " + (maxAantal - reisAantal);
 
             return "detail";
         }else{
