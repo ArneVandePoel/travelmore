@@ -27,17 +27,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
+                            <p>Nieuw bij TravelMore? <h:link value="Registreer een nieuw account" outcome="registreren" />.</p>
                             <h:form>
                                 <div class="form-group">
                                     <label for="email">E-mailadres:</label>
-                                    <h:inputText class="form-control" binding="#{email}" id="email"/>
+                                    <h:inputText class="form-control" binding="#{email}" id="email" required="true" requiredMessage="E-mailadres is vereist."/>
+                                    <small><h:message for="email" styleClass="text-danger" /></small>
                                 </div>
                                 <div class="form-group">
                                     <label for="wachtwoord">Wachtwoord:</label>
-                                    <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord"/>
+                                    <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord" required="true" requiredMessage="Wachtwoord is vereist."/>
+                                    <small><h:message for="wachtwoord" styleClass="text-danger" /></small>
                                 </div>
                                 <h:commandButton class="btn btn-primary mr-1" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
-                                <h:button class="btn btn-secondary" value="Annuleren" outcome="index" />
+                                <h:button class="btn btn-light" value="Annuleren" outcome="index" />
                             </h:form>
                         </div>
                     </div>

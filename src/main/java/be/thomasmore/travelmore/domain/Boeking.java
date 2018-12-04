@@ -9,11 +9,16 @@ import javax.persistence.*;
                 @NamedQuery(
                         name = Boeking.FIND_BOEKINGEN_GEBRUIKER,
                         query = "SELECT b FROM Boeking b WHERE (b.gebruiker) = :gebruiker"
+                ),
+                @NamedQuery(
+                        name = Boeking.FIND_ALL,
+                        query = "SELECT b FROM Boeking b"
                 )
         }
 )
 public class Boeking {
     public static final String FIND_BOEKINGEN_GEBRUIKER = "Boeking.findBoekingenGebruiker";
+    public static final String FIND_ALL = "Boeking.findAll";
 
     @Id
     private int boekingID;
