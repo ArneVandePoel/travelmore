@@ -39,7 +39,7 @@
                                     <h:inputSecret class="form-control" binding="#{wachtwoord}" id="wachtwoord" required="true" requiredMessage="Wachtwoord is vereist."/>
                                     <small><h:message for="wachtwoord" styleClass="text-danger" /></small>
                                 </div>
-                                <h:commandButton class="btn btn-primary mr-1" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
+                                <h:commandButton class="btn btn-info mr-1" value="Inloggen" action="#{gebruikerController.login(email.value, wachtwoord.value)}"/>
                                 <h:button class="btn btn-light" value="Annuleren" outcome="index" />
                             </h:form>
                         </div>

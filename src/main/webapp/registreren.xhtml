@@ -82,7 +82,7 @@
                                     <h:inputText class="form-control" binding="#{telefoonNummer}" id="telefoonNummer" required="true" requiredMessage="Telefoonnummer is vereist."/>
                                     <small><h:message for="telefoonNummer" styleClass="text-danger" /></small>
                                 </div>
-                                <h:commandButton class="btn btn-primary mr-1" value="Registreren" action="#{gebruikerController.maakGebruiker(email.value, wachtwoord.value, naam.value, voornaam.value, adres.value, postcode.value, gemeente.value, land.value, telefoonNummer.value)}"/>
+                                <h:commandButton class="btn btn-info mr-1" value="Registreren" action="#{gebruikerController.maakGebruiker(email.value, wachtwoord.value, naam.value, voornaam.value, adres.value, postcode.value, gemeente.value, land.value, telefoonNummer.value)}"/>
                                 <h:button class="btn btn-light" value="Annuleren" outcome="index" />
                             </h:form>
                         </div>

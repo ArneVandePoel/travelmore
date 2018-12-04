@@ -178,7 +178,7 @@
                                     </h:inputText>
                                     <small><h:message for="aantal" styleClass="text-danger" /></small>
                                 </div>
-                                <h:commandButton class="btn btn-primary" value="Bereken prijs"
+                                <h:commandButton class="btn btn-info" value="Bereken prijs"
                                                  action="#{boekingController.maakBoekingVoorstel(reis.reisID, aantal.value)}"/>
                             </h:form>
 
@@ -195,7 +195,7 @@
                                             <f:convertNumber type="currency" currencySymbol="€" locale="be-BE"/>
                                         </h:outputText>
                                     </p>
-                                    <h:commandButton class="btn btn-primary" value="Boek nu"
+                                    <h:commandButton class="btn btn-info" value="Boek nu"
                                                      action="#{boekingController.maakBoeking(reis.reisID, gebruikerController.getIngelogdeGebruiker().email)}"/>
                                 </h:form>
                             </c:if>
