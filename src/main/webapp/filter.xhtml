@@ -28,36 +28,36 @@
             <div class="container">
                 <div class="row">
                     <h:form>
-                        <p:dataTable value="#{reisController.getReizenLijst()}" var="reis" filteredValue="#{reisController.filteredReizen}">
+                        <p:dataTable paginator="true" tableStyleClass="table" value="#{reisController.getReizenLijst()}" var="reis" filteredValue="#{reisController.filteredReizen}">
                             <p:column id="hotelHeader" filterBy="#{reis.hotel.naam}" filterMatchMode="contains">
                                 <f:facet name="header">
-                                    <h:outputText value="Hotel" />
+                                    <h:outputText value="Hotel" priority="3"/>
                                 </f:facet>
                                 <h:outputText value="#{reis.hotel.naam}" />
                             </p:column>
 
-                            <p:column id="titelHeader" filterBy="#{reis.titel}" filterMatchMode="contains">
+                            <p:column id="titelHeader" filterBy="#{reis.titel}" filterMatchMode="contains" priority="5">
                                 <f:facet name="header">
                                     <h:outputText value="Titel" />
                                 </f:facet>
                                 <h:outputText value="#{reis.titel}" />
                             </p:column>
 
-                            <p:column id="plaatsHeader" sortBy="#{reis.bus.busType.aantalPlaatsen}">
+                            <p:column id="plaatsHeader" sortBy="#{reis.bus.busType.aantalPlaatsen}" priority="6">
                                 <f:facet name="header">
                                     <h:outputText value="Aantal vrije plaatsen" />
                                 </f:facet>
                                 <h:outputText value="#{boekingController.getMaxAantalVoorReis(reis) - boekingController.getAantalVoorReis(reis)}" />
                             </p:column>
 
-                            <p:column id="landHeader" filterBy="#{reis.hotel.land}" filterMatchMode="contains">
+                            <p:column id="landHeader" filterBy="#{reis.hotel.land}" filterMatchMode="contains" priority="4">
                                 <f:facet name="header">
                                     <h:outputText value="Land" />
                                 </f:facet>
                                 <h:outputText value="#{reis.hotel.land}" />
                             </p:column>
 
-                            <p:column id="vertrekheenHeader" sortBy="#{reis.tijdstipVertrekHeen}">
+                            <p:column id="vertrekheenHeader" sortBy="#{reis.tijdstipVertrekHeen}" priority="7">
                                 <f:facet name="header">
                                     <h:outputText value="Vertrek heen" />
                                 </f:facet>
@@ -66,7 +66,7 @@
                                 </h:outputText>
                             </p:column>
 
-                            <p:column id="aankomstterugHeader" sortBy="#{reis.tijdstipAankomstTerug}">
+                            <p:column id="aankomstterugHeader" sortBy="#{reis.tijdstipAankomstTerug}" priority="8">
                                 <f:facet name="header">
                                     <h:outputText value="Aankomst terug" />
                                 </f:facet>
@@ -75,7 +75,7 @@
                                 </h:outputText>
                             </p:column>
 
-                            <p:column id="prijsHeader" sortBy="#{reis.prijs}">
+                            <p:column id="prijsHeader" sortBy="#{reis.prijs}" priority="2">
                                 <f:facet name="header">
                                     <h:outputText value="Prijs" />
                                 </f:facet>
@@ -83,7 +83,7 @@
                             </p:column>
 
                             <p:column>
-                                <f:facet name="header">
+                                <f:facet name="header" priority="1">
                                     <h:outputText value="Boek" />
                                 </f:facet>
                                 <h:commandLink value = "Boek nu" action = "#{reisController.ReisDetails(reis)}" class="btn btn-info btn-l rounded-pill mt-2 text-white" />
