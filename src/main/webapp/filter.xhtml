@@ -45,9 +45,9 @@
 
                             <p:column id="plaatsHeader" sortBy="#{reis.bus.busType.aantalPlaatsen}">
                                 <f:facet name="header">
-                                    <h:outputText value="Aantal plaatsen" />
+                                    <h:outputText value="Aantal vrije plaatsen" />
                                 </f:facet>
-                                <h:outputText value="#{reis.bus.busType.aantalPlaatsen}" />
+                                <h:outputText value="#{boekingController.getMaxAantalVoorReis(reis) - boekingController.getAantalVoorReis(reis)}" />
                             </p:column>
 
                             <p:column id="landHeader" filterBy="#{reis.hotel.land}" filterMatchMode="contains">
