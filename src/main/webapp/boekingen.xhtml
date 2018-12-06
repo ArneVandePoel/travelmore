@@ -29,10 +29,13 @@
                                rendered="#{gebruikerController.getIngelogdeGebruiker().naam == null}"/>
 
                 <c:if test="#{gebruikerController.getIngelogdeGebruiker().naam != null}">
-                    <h:outputText value="U hebt geen boekingen!"
-                                   rendered="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID) == null}"/>
+                    <c:if test="#{empty boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID)}">
+                        U heeft nog geen boekingen.<br/>
+                        <br/>
+                        <h:link value="Klik hier" outcome="index" /> om naar het overzicht van de reizen te gaan.
+                    </c:if>
 
-                    <c:if test="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID) != null}">
+                    <c:if test="#{not empty boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID)}">
                         <h:dataTable
                                 value="#{boekingController.getBoekingenGebruiker(gebruikerController.getIngelogdeGebruiker().gebruikerID)}"
                                 var="boeking" class="table">
